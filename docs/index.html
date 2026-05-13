@@ -1,176 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AD350 · Database Technology</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,800&family=JetBrains+Mono:wght@400;500;700&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AD350 · Database Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,800&family=JetBrains+Mono:wght@400;500;700&family=Geist:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
+
 <body>
 
-<button class="menu-toggle" aria-label="Menu">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-</button>
+  <button class="menu-toggle" aria-label="Menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+  </button>
 
-<div class="layout">
+  <div class="layout">
 
-  <aside>
-    <a class="brand" href="index.html">
-      <div class="brand-mark">DB</div>
-      <div class="brand-text">
-        AD350
-        <small>Database Tech</small>
-      </div>
-    </a>
-
-    <nav>
-      <h4>Main</h4>
-      <ul>
-        <li><a href="index.html" data-page="index.html">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12L12 3l9 9"/><path d="M5 10v10h14V10"/></svg>
-          Home
-        </a></li>
-        <li><a href="assignments.html" data-page="assignments.html">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
-          Assignments
-        </a></li>
-        <li><a href="devlogs.html" data-page="devlogs.html">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>
-          Dev Logs
-        </a></li>
-        <li><a href="blogs.html" data-page="blogs.html">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          Discussion Blogs
-        </a></li>
-        <li><a href="interviews.html" data-page="interviews.html">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4l4 4 4-4h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
-          Mock Interviews
-        </a></li>
-        <li><a href="integrations.html" data-page="integrations.html">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-          Integrations
-        </a></li>
-      </ul>
-    </nav>
-
-    <div class="sidebar-foot">
-      Rae &middot; NSC<br>
-      <a href="https://github.com/givecoffee/AD350" target="_blank" rel="noopener">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.9.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
-        github.com/givecoffee
+    <aside>
+      <a class="brand" href="index.html">
+        <div class="brand-mark">DB</div>
+        <div class="brand-text">
+          AD350
+          <small>Database Tech</small>
+        </div>
       </a>
-    </div>
-  </aside>
 
-  <main>
-    <header class="hero">
-      <div class="eyebrow">
-        <span class="dot"></span>
-        AD350 &middot; Spring 2026
+      <nav>
+        <h4>Main</h4>
+        <ul>
+          <li><a href="index.html" data-page="index.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M3 12L12 3l9 9" />
+                <path d="M5 10v10h14V10" />
+              </svg>
+              Home
+            </a></li>
+          <li><a href="assignments.html" data-page="assignments.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="5" y="3" width="14" height="18" rx="2" />
+                <path d="M9 8h6M9 12h6M9 16h4" />
+              </svg>
+              Assignments
+            </a></li>
+          <li><a href="devlogs.html" data-page="devlogs.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <polyline points="8 6 2 12 8 18" />
+                <polyline points="16 6 22 12 16 18" />
+              </svg>
+              Dev Logs
+            </a></li>
+          <li><a href="blogs.html" data-page="blogs.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path
+                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+              </svg>
+              Discussion Blogs
+            </a></li>
+          <li><a href="interviews.html" data-page="interviews.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M20 2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4l4 4 4-4h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z" />
+              </svg>
+              Mock Interviews
+            </a></li>
+          <li><a href="integrations.html" data-page="integrations.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="3" width="7" height="7" rx="1" />
+                <rect x="3" y="14" width="7" height="7" rx="1" />
+                <rect x="14" y="14" width="7" height="7" rx="1" />
+              </svg>
+              Integrations
+            </a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-foot">
+        Rae &middot; NSC<br>
+        <a href="https://github.com/givecoffee/AD350" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.9.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3" />
+          </svg>
+          github.com/givecoffee
+        </a>
       </div>
-      <h1>Database <span class="italic">Technology</span></h1>
-      <p class="hero-lede">
-        A working wiki for the term. Assignments and their write-ups, weekly dev
-        logs tracking what broke and what didn't, discussion blogs unpacking the
-        readings, mock interviews against real questions, and the integrations
-        stitching the course project together.
-      </p>
+    </aside>
 
-      <div class="meta-strip">
-        <div>Course<strong>AD350</strong></div>
-        <div>Program<strong>App Development B.A.S.</strong></div>
-        <div>Institution<strong>North Seattle College</strong></div>
-        <div>Term<strong>Spring 2026</strong></div>
-      </div>
-    </header>
-
-    <section>
-      <div class="section-head">
-        <span class="section-num">01</span>
-        <h2>Course <span class="italic">summary</span></h2>
-      </div>
-      <p>
-        AD350 covers the foundations of database technology from a developer's
-        perspective. The relational model is the anchor &mdash; schema design,
-        normalization, SQL, transactions, indexing &mdash; and the term extends into
-        the wider landscape of document stores, key-value caches, and the
-        tradeoffs that drove their emergence.
-      </p>
-      <p>
-        The work happens in two parallel tracks. One is conceptual: readings,
-        discussion posts, and interview-style questions to sharpen vocabulary
-        and intuition. The other is practical: a term-long project that begins
-        with an entity model on paper and ends with a working application
-        backed by a real database, deployed and queryable.
-      </p>
-
-      <div class="callout">
-        <div class="callout-label">Working principle</div>
-        <p>
-          The schema is a hypothesis about how the world holds together.
-          Everything downstream &mdash; queries, indexes, application code, the
-          user experience itself &mdash; pays the price of getting it wrong, and
-          inherits the leverage of getting it right.
+    <main>
+      <header class="hero">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          AD350 &middot; Spring 2026
+        </div>
+        <h1>Database <span class="italic">Technology</span></h1>
+        <p class="hero-lede">
+          A working wiki for the term. Assignments and their write-ups, weekly dev
+          logs tracking what broke and what didn't, discussion blogs unpacking the
+          readings, mock interviews against real questions, and the integrations
+          stitching the course project together.
         </p>
-      </div>
-    </section>
 
-    <section>
-      <div class="section-head">
-        <span class="section-num">02</span>
-        <h2>Jump <span class="italic">in</span></h2>
-      </div>
+        <div class="meta-strip">
+          <div>Course<strong>AD350</strong></div>
+          <div>Program<strong>App Development B.A.S.</strong></div>
+          <div>Institution<strong>North Seattle College</strong></div>
+          <div>Term<strong>Spring 2026</strong></div>
+        </div>
+      </header>
 
-      <div class="jump-grid">
-        <a href="assignments.html" class="jump">
-          <div class="jump-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
-          </div>
-          <h3>Assignments</h3>
-          <p>Weekly deliverables and their write-ups</p>
-        </a>
-        <a href="devlogs.html" class="jump">
-          <div class="jump-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>
-          </div>
-          <h3>Dev Logs</h3>
-          <p>What broke this week and what fixed it</p>
-        </a>
-        <a href="blogs.html" class="jump">
-          <div class="jump-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          </div>
-          <h3>Discussion Blogs</h3>
-          <p>Long-form posts unpacking the readings</p>
-        </a>
-        <a href="interviews.html" class="jump">
-          <div class="jump-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4l4 4 4-4h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
-          </div>
-          <h3>Mock Interviews</h3>
-          <p>Database questions and worked answers</p>
-        </a>
-        <a href="integrations.html" class="jump">
-          <div class="jump-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-          </div>
-          <h3>Integrations</h3>
-          <p>The tools and services stitched together</p>
-        </a>
-      </div>
-    </section>
+      <section>
+        <div class="section-head">
+          <span class="section-num">01</span>
+          <h2>Course <span class="italic">summary</span></h2>
+        </div>
+        <p>
+          Covers intermediate programming in an SQL relational database. Provides an introduction to non-relational
+          databases as used in Cloud Computing and Big Data. The RDMS topics include views, models, stored procedures,
+          triggers, indexing, JOINs and abstraction techniques, query construct efficiency. Introduction to noSQL
+          databases: uses, terminology, indexing, storage, compute consumption, compression, and reliability.
+        </p>
+        <p>
+          The work happens in two parallel tracks. One is conceptual: readings,
+          discussion posts, and interview-style questions to sharpen vocabulary
+          and intuition. The other is practical: a term-long project that begins
+          with an entity model on paper and ends with a working application
+          backed by a real database, deployed and queryable.
+        </p>
 
-    <footer class="page-foot">
-      <div>AD350 &middot; Database Technology &middot; North Seattle College</div>
-      <div><a href="https://github.com/givecoffee/AD350" target="_blank" rel="noopener">github.com/givecoffee/AD350</a></div>
-    </footer>
+        <div class="callout">
+          <div class="callout-label">Program Outcomes</div>
+          <p>
+            Present and effectively communicate complex technical concepts and constraints to a wide range of technical and
+            non-technical stakeholders. Research trends in software development and acquire and integrate new skills and knowledge
+            to keep abreast of changes within the software development profession.
+          </p>
+        </div>
+      </section>
 
-  </main>
-</div>
+      <section>
+        <div class="section-head">
+          <span class="section-num">02</span>
+          <h2>Jump <span class="italic">in</span></h2>
+        </div>
 
-<script src="assets/app.js"></script>
+        <div class="jump-grid">
+          <a href="assignments.html" class="jump">
+            <div class="jump-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="5" y="3" width="14" height="18" rx="2" />
+                <path d="M9 8h6M9 12h6M9 16h4" />
+              </svg>
+            </div>
+            <h3>Assignments</h3>
+            <p>Weekly deliverables and their write-ups</p>
+          </a>
+          <a href="devlogs.html" class="jump">
+            <div class="jump-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <polyline points="8 6 2 12 8 18" />
+                <polyline points="16 6 22 12 16 18" />
+              </svg>
+            </div>
+            <h3>Dev Logs</h3>
+            <p>What broke this week and what fixed it</p>
+          </a>
+          <a href="blogs.html" class="jump">
+            <div class="jump-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path
+                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+              </svg>
+            </div>
+            <h3>Discussion Blogs</h3>
+            <p>Long-form posts unpacking the readings</p>
+          </a>
+          <a href="interviews.html" class="jump">
+            <div class="jump-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M20 2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4l4 4 4-4h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z" />
+              </svg>
+            </div>
+            <h3>Mock Interviews</h3>
+            <p>Database questions and worked answers</p>
+          </a>
+          <a href="integrations.html" class="jump">
+            <div class="jump-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="3" width="7" height="7" rx="1" />
+                <rect x="3" y="14" width="7" height="7" rx="1" />
+                <rect x="14" y="14" width="7" height="7" rx="1" />
+              </svg>
+            </div>
+            <h3>Integrations</h3>
+            <p>The tools and services stitched together</p>
+          </a>
+        </div>
+      </section>
+
+      <footer class="page-foot">
+        <div>AD350 &middot; Database Technology &middot; North Seattle College</div>
+        <div><a href="https://github.com/givecoffee/AD350" target="_blank"
+            rel="noopener">github.com/givecoffee/AD350</a></div>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="assets/app.js"></script>
 </body>
+
 </html>
