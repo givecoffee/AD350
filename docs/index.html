@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Database Technology · Course Wiki</title>
+<title>AD350 · Database Technology</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,800&family=JetBrains+Mono:wght@400;500;700&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,800&family=JetBrains+Mono:wght@400;500;700&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #15171a;
@@ -28,7 +28,6 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -44,7 +43,6 @@
       radial-gradient(circle at 85% 80%, rgba(94, 234, 212, 0.03) 0%, transparent 50%);
   }
 
-  /* grain texture overlay */
   body::before {
     content: '';
     position: fixed;
@@ -63,12 +61,11 @@
     z-index: 2;
   }
 
-  /* ====== SIDEBAR ====== */
   aside {
     position: sticky;
     top: 0;
     height: 100vh;
-    padding: 40px 32px;
+    padding: 40px 28px;
     border-right: 1px solid var(--rule);
     overflow-y: auto;
     scrollbar-width: thin;
@@ -82,14 +79,14 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
     opacity: 0;
     animation: fadeUp 0.8s 0.1s forwards;
   }
 
   .brand-mark {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border-radius: 10px;
     background: var(--surface);
     box-shadow:
@@ -99,14 +96,15 @@
     place-items: center;
     font-family: var(--mono);
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13px;
     color: var(--accent);
+    letter-spacing: -0.05em;
   }
 
   .brand-text {
     font-family: var(--display);
     font-weight: 600;
-    font-size: 17px;
+    font-size: 16px;
     letter-spacing: -0.02em;
   }
 
@@ -118,7 +116,7 @@
     color: var(--text-faint);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    margin-top: 2px;
+    margin-top: 3px;
   }
 
   nav h4 {
@@ -128,7 +126,7 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--text-faint);
-    margin: 28px 0 12px;
+    margin: 24px 0 10px;
     padding-left: 12px;
   }
 
@@ -139,23 +137,23 @@
   nav a {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 9px 12px;
+    gap: 12px;
+    padding: 10px 14px;
     color: var(--text-dim);
     text-decoration: none;
     font-size: 14px;
-    border-radius: 8px;
+    border-radius: 9px;
     transition: all 0.2s ease;
     position: relative;
+    margin-bottom: 2px;
   }
 
-  nav a::before {
-    content: '';
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--text-faint);
-    transition: all 0.2s ease;
+  nav a .icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    opacity: 0.7;
+    transition: opacity 0.2s;
   }
 
   nav a:hover {
@@ -166,10 +164,7 @@
       inset -1px -1px 2px var(--shadow-light);
   }
 
-  nav a:hover::before {
-    background: var(--accent);
-    box-shadow: 0 0 8px var(--accent);
-  }
+  nav a:hover .icon { opacity: 1; }
 
   nav a.active {
     color: var(--accent);
@@ -179,23 +174,47 @@
       inset -2px -2px 4px var(--shadow-light);
   }
 
-  nav a.active::before {
-    background: var(--accent);
-    box-shadow: 0 0 8px var(--accent);
+  nav a.active .icon { opacity: 1; }
+
+  .sidebar-foot {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    line-height: 1.7;
   }
 
-  /* ====== MAIN ====== */
+  .sidebar-foot a {
+    color: var(--text-dim);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+
+  .sidebar-foot a:hover { color: var(--accent); }
+
   main {
-    padding: 80px 80px 120px;
-    max-width: 980px;
+    padding: 72px 80px 120px;
+    max-width: 1040px;
   }
 
-  /* ====== HERO ====== */
-  .hero {
-    margin-bottom: 96px;
-    opacity: 0;
-    animation: fadeUp 0.9s 0.2s forwards;
+  .page {
+    display: none;
+    animation: pageIn 0.5s ease;
   }
+
+  .page.active { display: block; }
+
+  @keyframes pageIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero { margin-bottom: 80px; }
 
   .eyebrow {
     display: inline-flex;
@@ -248,7 +267,7 @@
   .hero-lede {
     font-size: 19px;
     color: var(--text-dim);
-    max-width: 620px;
+    max-width: 640px;
     line-height: 1.55;
     margin-bottom: 40px;
   }
@@ -256,6 +275,7 @@
   .meta-strip {
     display: flex;
     gap: 32px;
+    flex-wrap: wrap;
     padding-top: 32px;
     border-top: 1px solid var(--rule);
     font-family: var(--mono);
@@ -271,9 +291,28 @@
     font-size: 13px;
   }
 
-  /* ====== SECTIONS ====== */
+  .page-header {
+    margin-bottom: 64px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .page-header .eyebrow { margin-bottom: 20px; }
+
+  .page-header h1 {
+    font-size: clamp(44px, 6vw, 72px);
+    margin-bottom: 20px;
+  }
+
+  .page-header p {
+    font-size: 17px;
+    color: var(--text-dim);
+    max-width: 620px;
+    line-height: 1.55;
+  }
+
   section {
-    margin-bottom: 96px;
+    margin-bottom: 80px;
     scroll-margin-top: 40px;
   }
 
@@ -281,8 +320,8 @@
     display: flex;
     align-items: baseline;
     gap: 16px;
-    margin-bottom: 32px;
-    padding-bottom: 20px;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
     border-bottom: 1px solid var(--rule);
   }
 
@@ -295,7 +334,7 @@
 
   h2 {
     font-family: var(--display);
-    font-size: 44px;
+    font-size: 40px;
     font-weight: 400;
     letter-spacing: -0.025em;
     line-height: 1.1;
@@ -309,203 +348,403 @@
 
   h3 {
     font-family: var(--display);
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 500;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     letter-spacing: -0.01em;
   }
 
   p { color: var(--text-dim); margin-bottom: 16px; max-width: 70ch; }
   p strong { color: var(--text); font-weight: 500; }
 
-  /* ====== CARDS ====== */
-  .card-grid {
+  .jump-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    margin: 40px 0;
+  }
+
+  .jump {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow:
+      6px 6px 14px var(--shadow-dark),
+      -6px -6px 14px var(--shadow-light);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .jump:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      8px 8px 18px var(--shadow-dark),
+      -8px -8px 18px var(--shadow-light);
+  }
+
+  .jump::after {
+    content: '→';
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    color: var(--text-faint);
+    font-size: 18px;
+    transition: all 0.3s;
+  }
+
+  .jump:hover::after {
+    color: var(--accent);
+    transform: translate(4px, -2px);
+  }
+
+  .jump-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: var(--bg);
+    display: grid;
+    place-items: center;
+    margin-bottom: 16px;
+    box-shadow: inset 1.5px 1.5px 3px var(--shadow-dark);
+    color: var(--accent);
+  }
+
+  .jump h3 {
+    font-size: 19px;
+    margin-bottom: 6px;
+  }
+
+  .jump p {
+    font-size: 13.5px;
+    margin-bottom: 0;
+    color: var(--text-dim);
+  }
+
+  .item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .item {
+    background: var(--surface);
+    border-radius: 14px;
+    padding: 22px 26px;
+    box-shadow:
+      4px 4px 10px var(--shadow-dark),
+      -4px -4px 10px var(--shadow-light);
+    transition: all 0.3s;
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .item:hover { transform: translateX(3px); }
+
+  .item-num {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .item-body h3 {
+    font-size: 17px;
+    margin-bottom: 4px;
+  }
+
+  .item-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .item-body p {
+    font-size: 13.5px;
+    margin-bottom: 0;
+  }
+
+  .status {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 5px 11px;
+    border-radius: 100px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    box-shadow: inset 1px 1px 2px var(--shadow-dark);
+    white-space: nowrap;
+  }
+
+  .status.done { background: rgba(94, 234, 212, 0.1); color: var(--accent); }
+  .status.progress { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
+  .status.upcoming { background: var(--bg); color: var(--text-faint); }
+
+  .log-entry {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .log-entry:last-child { border-bottom: none; }
+
+  .log-date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-top: 4px;
+  }
+
+  .log-date strong {
+    display: block;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--accent);
+    margin-top: 2px;
+    text-transform: none;
+    letter-spacing: -0.01em;
+  }
+
+  .log-body h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .log-tags {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+
+  .log-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 4px 10px;
+    background: var(--surface);
+    color: var(--text-dim);
+    border-radius: 100px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    box-shadow:
+      inset 1px 1px 2px var(--shadow-dark),
+      inset -1px -1px 2px var(--shadow-light);
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 20px;
     margin-top: 32px;
   }
 
-  .card {
+  .blog-card {
     background: var(--surface);
-    border-radius: 18px;
+    border-radius: 16px;
     padding: 28px;
     box-shadow:
-      6px 6px 16px var(--shadow-dark),
-      -6px -6px 16px var(--shadow-light);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .card:hover {
-    transform: translateY(-2px);
-    box-shadow:
-      8px 8px 20px var(--shadow-dark),
-      -8px -8px 20px var(--shadow-light);
-  }
-
-  .card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 80px;
-    height: 80px;
-    background: radial-gradient(circle at top right, var(--accent-glow), transparent 70%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .card:hover::after { opacity: 1; }
-
-  .card-num {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-faint);
-    letter-spacing: 0.15em;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .card-num::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--rule);
-  }
-
-  .card p { font-size: 14px; margin-bottom: 0; }
-
-  /* ====== CODE BLOCKS ====== */
-  .code {
-    background: var(--bg);
-    border-radius: 14px;
-    padding: 24px 28px;
-    margin: 24px 0;
-    font-family: var(--mono);
-    font-size: 13.5px;
-    line-height: 1.7;
-    overflow-x: auto;
-    box-shadow:
-      inset 3px 3px 8px var(--shadow-dark),
-      inset -3px -3px 8px var(--shadow-light);
-    position: relative;
-  }
-
-  .code-label {
-    position: absolute;
-    top: 12px;
-    right: 16px;
-    font-size: 10px;
-    color: var(--text-faint);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
-  .code .kw { color: #f472b6; }
-  .code .fn { color: var(--accent); }
-  .code .str { color: #fbbf24; }
-  .code .com { color: var(--text-faint); font-style: italic; }
-  .code .num { color: #a78bfa; }
-
-  /* ====== KEY-VALUE TABLE ====== */
-  .concept-table {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    margin: 24px 0;
-    border-radius: 14px;
-    background: var(--surface);
-    box-shadow:
-      inset 2px 2px 6px var(--shadow-dark),
-      inset -2px -2px 6px var(--shadow-light);
-    overflow: hidden;
-  }
-
-  .concept-table > div {
-    padding: 18px 24px;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .concept-table > div:nth-last-child(-n+2) { border-bottom: none; }
-
-  .concept-table dt {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-
-  .concept-table dd {
-    color: var(--text-dim);
-    font-size: 14.5px;
-  }
-
-  /* ====== NORMAL FORM LADDER ====== */
-  .ladder {
-    margin: 32px 0;
+      6px 6px 14px var(--shadow-dark),
+      -6px -6px 14px var(--shadow-light);
+    transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
 
-  .rung {
-    display: grid;
-    grid-template-columns: 80px 1fr auto;
+  .blog-card:hover { transform: translateY(-3px); }
+
+  .blog-card .meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .blog-card h3 {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .blog-card p {
+    font-size: 14px;
+    flex: 1;
+  }
+
+  .blog-card .read {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 8px;
+    align-self: flex-start;
+    transition: gap 0.2s;
+    display: inline-flex;
     align-items: center;
-    gap: 24px;
-    padding: 20px 24px;
+    gap: 6px;
+  }
+
+  .blog-card .read:hover { gap: 10px; }
+
+  .qa {
     background: var(--surface);
     border-radius: 14px;
+    padding: 0;
+    margin-bottom: 14px;
     box-shadow:
       4px 4px 10px var(--shadow-dark),
       -4px -4px 10px var(--shadow-light);
-    transition: all 0.3s;
+    overflow: hidden;
+  }
+
+  .qa summary {
+    padding: 22px 26px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    list-style: none;
+    transition: background 0.2s;
   }
 
-  .rung:hover { transform: translateX(4px); }
+  .qa summary::-webkit-details-marker { display: none; }
 
-  .rung-num {
-    font-family: var(--display);
-    font-size: 32px;
-    font-weight: 400;
+  .qa summary:hover { background: var(--surface-2); }
+
+  .qa[open] summary { border-bottom: 1px solid var(--rule); }
+
+  .qa-num {
+    font-family: var(--mono);
+    font-size: 11px;
     color: var(--accent);
-    font-style: italic;
-    line-height: 1;
+    letter-spacing: 0.15em;
+    flex-shrink: 0;
+    width: 32px;
   }
 
-  .rung-title {
+  .qa-q {
+    flex: 1;
     font-family: var(--display);
     font-size: 17px;
     font-weight: 500;
-    margin-bottom: 4px;
+    color: var(--text);
   }
 
-  .rung-desc {
-    font-size: 13.5px;
-    color: var(--text-dim);
-  }
-
-  .rung-tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    padding: 4px 10px;
+  .qa-toggle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
     background: var(--bg);
-    color: var(--text-faint);
-    border-radius: 100px;
-    letter-spacing: 0.1em;
+    display: grid;
+    place-items: center;
+    color: var(--text-dim);
     box-shadow: inset 1px 1px 2px var(--shadow-dark);
+    font-size: 14px;
+    transition: transform 0.3s, color 0.3s;
   }
 
-  /* ====== CALLOUT ====== */
+  .qa[open] .qa-toggle {
+    transform: rotate(45deg);
+    color: var(--accent);
+  }
+
+  .qa-a {
+    padding: 20px 26px 26px;
+  }
+
+  .qa-a p { font-size: 14.5px; line-height: 1.65; }
+  .qa-a p:last-child { margin-bottom: 0; }
+  .qa-a code {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  .stack-item {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 26px;
+    box-shadow:
+      6px 6px 14px var(--shadow-dark),
+      -6px -6px 14px var(--shadow-light);
+    transition: transform 0.3s;
+  }
+
+  .stack-item:hover { transform: translateY(-2px); }
+
+  .stack-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .stack-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--bg);
+    display: grid;
+    place-items: center;
+    box-shadow: inset 1.5px 1.5px 3px var(--shadow-dark);
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--accent);
+  }
+
+  .stack-name {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  .stack-role {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--text-faint);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .stack-item p {
+    font-size: 13.5px;
+    margin-bottom: 0;
+  }
+
   .callout {
     margin: 32px 0;
-    padding: 24px 28px;
+    padding: 22px 26px;
     background: var(--surface);
     border-radius: 14px;
     border-left: 2px solid var(--accent);
@@ -523,12 +762,11 @@
     margin-bottom: 8px;
   }
 
-  .callout p { margin-bottom: 0; color: var(--text); font-size: 15px; }
+  .callout p { margin-bottom: 0; color: var(--text); font-size: 15px; max-width: none; }
 
-  /* ====== FOOTER ====== */
-  footer {
-    margin-top: 120px;
-    padding-top: 40px;
+  .page-foot {
+    margin-top: 100px;
+    padding-top: 32px;
     border-top: 1px solid var(--rule);
     display: flex;
     justify-content: space-between;
@@ -536,533 +774,731 @@
     font-family: var(--mono);
     font-size: 12px;
     color: var(--text-faint);
+    flex-wrap: wrap;
+    gap: 16px;
   }
 
-  footer a {
+  .page-foot a {
     color: var(--text-dim);
     text-decoration: none;
     transition: color 0.2s;
   }
-  footer a:hover { color: var(--accent); }
+  .page-foot a:hover { color: var(--accent); }
 
-  /* ====== ANIMATIONS ====== */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+  .menu-toggle {
+    display: none;
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 100;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    box-shadow:
+      3px 3px 8px var(--shadow-dark),
+      -3px -3px 8px var(--shadow-light);
   }
 
-  .reveal.in {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ====== RESPONSIVE ====== */
   @media (max-width: 900px) {
     .layout { grid-template-columns: 1fr; }
     aside {
-      position: relative;
-      height: auto;
-      border-right: none;
-      border-bottom: 1px solid var(--rule);
-      padding: 24px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 280px;
+      z-index: 50;
+      background: var(--bg);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      border-right: 1px solid var(--rule);
     }
-    main { padding: 40px 24px 80px; }
-    h1 { font-size: 48px; }
-    h2 { font-size: 32px; }
-    .meta-strip { flex-wrap: wrap; gap: 20px; }
-    .concept-table { grid-template-columns: 1fr; }
-    .rung { grid-template-columns: 60px 1fr; }
-    .rung-tag { grid-column: 2; justify-self: start; }
+    aside.open { transform: translateX(0); }
+    .menu-toggle { display: grid; place-items: center; }
+    main { padding: 64px 24px 80px; }
+    h1 { font-size: 44px; }
+    h2 { font-size: 28px; }
+    .log-entry { grid-template-columns: 1fr; gap: 8px; }
+    .item { grid-template-columns: 40px 1fr; }
+    .item .status { grid-column: 2; justify-self: start; }
   }
 </style>
 </head>
 <body>
 
+<button class="menu-toggle" aria-label="Menu">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+
 <div class="layout">
 
-  <!-- ============ SIDEBAR ============ -->
   <aside>
     <div class="brand">
       <div class="brand-mark">DB</div>
       <div class="brand-text">
-        Database Tech
-        <small>NSC · App Dev</small>
+        AD350
+        <small>Database Tech</small>
       </div>
     </div>
 
     <nav>
-      <h4>Foundations</h4>
+      <h4>Main</h4>
       <ul>
-        <li><a href="#overview" class="nav-link active">Overview</a></li>
-        <li><a href="#relational" class="nav-link">Relational Model</a></li>
-        <li><a href="#sql" class="nav-link">SQL Reference</a></li>
-      </ul>
-
-      <h4>Design</h4>
-      <ul>
-        <li><a href="#er" class="nav-link">ER Diagrams</a></li>
-        <li><a href="#normalization" class="nav-link">Normalization</a></li>
-        <li><a href="#indexing" class="nav-link">Indexing</a></li>
-      </ul>
-
-      <h4>Beyond Relational</h4>
-      <ul>
-        <li><a href="#transactions" class="nav-link">Transactions &amp; ACID</a></li>
-        <li><a href="#nosql" class="nav-link">NoSQL Landscape</a></li>
-      </ul>
-
-      <h4>Course</h4>
-      <ul>
-        <li><a href="#resources" class="nav-link">Resources</a></li>
+        <li><a href="#home" class="page-link" data-page="home">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12L12 3l9 9"/><path d="M5 10v10h14V10"/></svg>
+          Home
+        </a></li>
+        <li><a href="#assignments" class="page-link" data-page="assignments">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
+          Assignments
+        </a></li>
+        <li><a href="#devlogs" class="page-link" data-page="devlogs">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>
+          Dev Logs
+        </a></li>
+        <li><a href="#blogs" class="page-link" data-page="blogs">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          Discussion Blogs
+        </a></li>
+        <li><a href="#interviews" class="page-link" data-page="interviews">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4l4 4 4-4h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
+          Mock Interviews
+        </a></li>
+        <li><a href="#integrations" class="page-link" data-page="integrations">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Integrations
+        </a></li>
       </ul>
     </nav>
+
+    <div class="sidebar-foot">
+      Rae · NSC<br>
+      <a href="https://github.com/givecoffee/AD350" target="_blank" rel="noopener">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.9.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
+        github.com/givecoffee
+      </a>
+    </div>
   </aside>
 
-  <!-- ============ MAIN ============ -->
   <main>
 
-    <!-- HERO -->
-    <header class="hero">
-      <div class="eyebrow">
-        <span class="dot"></span>
-        Course Wiki · Updated continuously
-      </div>
-      <h1>Database <span class="italic">Technology</span></h1>
-      <p class="hero-lede">
-        A working reference for the data layer. Notes, patterns, and worked examples
-        from relational foundations through transactional guarantees and the wider
-        NoSQL world. Built alongside coursework, refined as understanding deepens.
-      </p>
-
-      <div class="meta-strip">
-        <div>
-          Program
-          <strong>App Development B.A.S.</strong>
+    <!-- ===================== HOME ===================== -->
+    <div class="page active" data-page="home">
+      <header class="hero">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          AD350 · Spring 2026
         </div>
-        <div>
-          Institution
-          <strong>North Seattle College</strong>
-        </div>
-        <div>
-          Focus
-          <strong>Data Science Principles</strong>
-        </div>
-        <div>
-          Status
-          <strong>In progress</strong>
-        </div>
-      </div>
-    </header>
-
-    <!-- ============ OVERVIEW ============ -->
-    <section id="overview" class="reveal">
-      <div class="section-head">
-        <span class="section-num">01</span>
-        <h2>An <span class="italic">overview</span></h2>
-      </div>
-
-      <p>
-        Databases are the <strong>quiet infrastructure</strong> beneath nearly every
-        piece of software worth running. This wiki collects what the course covers,
-        what gets glossed over, and what becomes obvious only after building something
-        real. Treat it as a working document.
-      </p>
-
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-num">01 · Modeling</div>
-          <h3>Schema as thinking</h3>
-          <p>The schema is a hypothesis about how the world holds together. Get it wrong and everything downstream pays for it.</p>
-        </div>
-        <div class="card">
-          <div class="card-num">02 · Queries</div>
-          <h3>Declarative intent</h3>
-          <p>SQL asks what, not how. The planner translates intent into work, and reading plans is half the job.</p>
-        </div>
-        <div class="card">
-          <div class="card-num">03 · Guarantees</div>
-          <h3>What you can promise</h3>
-          <p>ACID, isolation levels, and consistency models. The difference between data that survives and data that drifts.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ RELATIONAL ============ -->
-    <section id="relational" class="reveal">
-      <div class="section-head">
-        <span class="section-num">02</span>
-        <h2>The relational <span class="italic">model</span></h2>
-      </div>
-
-      <p>
-        Codd's 1970 paper is the foundation everything else is measured against.
-        Data lives in relations (tables), each row a tuple, each column an attribute
-        drawn from a domain. Constraints keep it honest.
-      </p>
-
-      <dl class="concept-table">
-        <div><dt>Relation</dt></div>
-        <div><dd>A set of tuples sharing the same attribute structure. A table, in practice.</dd></div>
-        <div><dt>Tuple</dt></div>
-        <div><dd>A single row. An assertion that a fact holds.</dd></div>
-        <div><dt>Attribute</dt></div>
-        <div><dd>A named column drawn from a domain (its type).</dd></div>
-        <div><dt>Primary Key</dt></div>
-        <div><dd>The minimal set of attributes that uniquely identify each tuple.</dd></div>
-        <div><dt>Foreign Key</dt></div>
-        <div><dd>A column referencing the primary key of another relation. The glue.</dd></div>
-        <div><dt>Constraint</dt></div>
-        <div><dd>A rule the data must satisfy. Enforced by the database, not the application.</dd></div>
-      </dl>
-
-      <div class="callout">
-        <div class="callout-label">Worth remembering</div>
-        <p>
-          Relational doesn't mean "tables with relationships between them." It means
-          "every value is addressable by table, key, and attribute." That property is
-          what makes set operations work.
+        <h1>Database <span class="italic">Technology</span></h1>
+        <p class="hero-lede">
+          A working wiki for the term. Assignments and their write-ups, weekly dev
+          logs tracking what broke and what didn't, discussion blogs unpacking the
+          readings, mock interviews against real questions, and the integrations
+          stitching the course project together.
         </p>
-      </div>
-    </section>
 
-    <!-- ============ SQL ============ -->
-    <section id="sql" class="reveal">
-      <div class="section-head">
-        <span class="section-num">03</span>
-        <h2>SQL <span class="italic">reference</span></h2>
-      </div>
-
-      <p>
-        SQL has more dialects than spoken English. The fundamentals carry across all
-        of them, but the moment you reach for window functions, JSON operators, or
-        anything date-related, check the docs for your engine.
-      </p>
-
-      <div class="code">
-        <span class="code-label">SQL</span>
-<span class="com">-- Find the top three customers by lifetime revenue,</span>
-<span class="com">-- only counting paid orders from the last two years.</span>
-
-<span class="kw">SELECT</span>
-  c.id,
-  c.name,
-  <span class="fn">SUM</span>(o.total) <span class="kw">AS</span> lifetime_revenue,
-  <span class="fn">COUNT</span>(*) <span class="kw">AS</span> order_count
-<span class="kw">FROM</span> customers c
-<span class="kw">JOIN</span> orders o <span class="kw">ON</span> o.customer_id = c.id
-<span class="kw">WHERE</span> o.status = <span class="str">'paid'</span>
-  <span class="kw">AND</span> o.placed_at &gt; <span class="fn">NOW</span>() - <span class="kw">INTERVAL</span> <span class="str">'2 years'</span>
-<span class="kw">GROUP BY</span> c.id, c.name
-<span class="kw">ORDER BY</span> lifetime_revenue <span class="kw">DESC</span>
-<span class="kw">LIMIT</span> <span class="num">3</span>;
-      </div>
-
-      <h3 style="margin-top: 32px;">Clauses in the order they actually run</h3>
-      <p>
-        The order you write SQL in is not the order the engine evaluates it. Knowing
-        the real order makes debugging faster and explains why you can't reference
-        a <code style="font-family: var(--mono); color: var(--accent); font-size: 13px;">SELECT</code> alias in a <code style="font-family: var(--mono); color: var(--accent); font-size: 13px;">WHERE</code> clause.
-      </p>
-
-      <div class="code">
-        <span class="code-label">Eval order</span>
-<span class="num">1.</span>  <span class="kw">FROM</span>      <span class="com">// pick the source tables</span>
-<span class="num">2.</span>  <span class="kw">JOIN</span>      <span class="com">// combine them</span>
-<span class="num">3.</span>  <span class="kw">WHERE</span>     <span class="com">// filter rows</span>
-<span class="num">4.</span>  <span class="kw">GROUP BY</span>  <span class="com">// fold into groups</span>
-<span class="num">5.</span>  <span class="kw">HAVING</span>    <span class="com">// filter groups</span>
-<span class="num">6.</span>  <span class="kw">SELECT</span>    <span class="com">// project columns</span>
-<span class="num">7.</span>  <span class="kw">DISTINCT</span>  <span class="com">// dedupe</span>
-<span class="num">8.</span>  <span class="kw">ORDER BY</span>  <span class="com">// sort</span>
-<span class="num">9.</span>  <span class="kw">LIMIT</span>     <span class="com">// trim</span>
-      </div>
-    </section>
-
-    <!-- ============ ER ============ -->
-    <section id="er" class="reveal">
-      <div class="section-head">
-        <span class="section-num">04</span>
-        <h2>Entity-relationship <span class="italic">diagrams</span></h2>
-      </div>
-
-      <p>
-        ER diagrams are how a schema gets argued about before anyone writes
-        <code style="font-family: var(--mono); color: var(--accent); font-size: 13px;">CREATE TABLE</code>. Entities are nouns. Relationships are verbs. Cardinality
-        answers <em>how many</em>.
-      </p>
-
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-num">1 — 1</div>
-          <h3>One-to-one</h3>
-          <p>A user has one profile; a profile belongs to one user. Often a sign you could collapse them into one table unless you have a reason not to.</p>
+        <div class="meta-strip">
+          <div>Course<strong>AD350</strong></div>
+          <div>Program<strong>App Development B.A.S.</strong></div>
+          <div>Institution<strong>North Seattle College</strong></div>
+          <div>Term<strong>Spring 2026</strong></div>
         </div>
-        <div class="card">
-          <div class="card-num">1 — N</div>
-          <h3>One-to-many</h3>
-          <p>A customer has many orders; an order belongs to one customer. The foreign key lives on the many side. The bread and butter of schema design.</p>
-        </div>
-        <div class="card">
-          <div class="card-num">N — N</div>
-          <h3>Many-to-many</h3>
-          <p>Students take many courses; courses have many students. Requires a join table holding both keys. Carry your join tables proudly.</p>
-        </div>
-      </div>
-    </section>
+      </header>
 
-    <!-- ============ NORMALIZATION ============ -->
-    <section id="normalization" class="reveal">
-      <div class="section-head">
-        <span class="section-num">05</span>
-        <h2><span class="italic">Normalization</span></h2>
-      </div>
-
-      <p>
-        Normalization is the process of removing redundancy and update anomalies from
-        a schema. Each normal form is stricter than the last. In practice most
-        production schemas live around 3NF and selectively denormalize for read
-        performance.
-      </p>
-
-      <div class="ladder">
-        <div class="rung">
-          <div class="rung-num">1NF</div>
-          <div>
-            <div class="rung-title">First Normal Form</div>
-            <div class="rung-desc">Every column holds atomic values. No comma-separated lists, no nested structures.</div>
-          </div>
-          <div class="rung-tag">Atomic</div>
+      <section>
+        <div class="section-head">
+          <span class="section-num">01</span>
+          <h2>Course <span class="italic">summary</span></h2>
         </div>
-        <div class="rung">
-          <div class="rung-num">2NF</div>
-          <div>
-            <div class="rung-title">Second Normal Form</div>
-            <div class="rung-desc">1NF plus every non-key column depends on the <em>whole</em> primary key, not part of it.</div>
-          </div>
-          <div class="rung-tag">No partial</div>
-        </div>
-        <div class="rung">
-          <div class="rung-num">3NF</div>
-          <div>
-            <div class="rung-title">Third Normal Form</div>
-            <div class="rung-desc">2NF plus no transitive dependencies. Non-key columns depend only on the key.</div>
-          </div>
-          <div class="rung-tag">No transitive</div>
-        </div>
-        <div class="rung">
-          <div class="rung-num">BCNF</div>
-          <div>
-            <div class="rung-title">Boyce-Codd Normal Form</div>
-            <div class="rung-desc">A stricter version of 3NF. Every functional dependency has a superkey on the left.</div>
-          </div>
-          <div class="rung-tag">Stricter</div>
-        </div>
-      </div>
-
-      <div class="callout">
-        <div class="callout-label">Heuristic</div>
         <p>
-          Normalize until it hurts. Denormalize until it works. The first part is the
-          design exercise. The second part is the optimization exercise. Don't skip
-          straight to the second.
+          AD350 covers the foundations of database technology from a developer's
+          perspective. The relational model is the anchor — schema design,
+          normalization, SQL, transactions, indexing — and the term extends into
+          the wider landscape of document stores, key-value caches, and the
+          tradeoffs that drove their emergence.
         </p>
-      </div>
-    </section>
-
-    <!-- ============ INDEXING ============ -->
-    <section id="indexing" class="reveal">
-      <div class="section-head">
-        <span class="section-num">06</span>
-        <h2><span class="italic">Indexing</span></h2>
-      </div>
-
-      <p>
-        An index is a separate data structure the database maintains to answer
-        certain queries fast. The most common is a B-tree. Indexes speed up reads
-        and slow down writes. Picking which columns to index is half the job of a
-        database engineer.
-      </p>
-
-      <dl class="concept-table">
-        <div><dt>B-tree</dt></div>
-        <div><dd>Default for most engines. Balanced tree, good for equality and range queries.</dd></div>
-        <div><dt>Hash</dt></div>
-        <div><dd>Equality only. Faster than B-tree for that one job, useless for ranges.</dd></div>
-        <div><dt>Composite</dt></div>
-        <div><dd>Multiple columns in one index. Order matters — leftmost prefix rules apply.</dd></div>
-        <div><dt>Covering</dt></div>
-        <div><dd>An index that contains every column the query needs. No table lookup required.</dd></div>
-        <div><dt>Partial</dt></div>
-        <div><dd>An index only over rows matching a predicate. Smaller, faster, fitter.</dd></div>
-      </dl>
-    </section>
-
-    <!-- ============ TRANSACTIONS ============ -->
-    <section id="transactions" class="reveal">
-      <div class="section-head">
-        <span class="section-num">07</span>
-        <h2>Transactions <span class="italic">&amp; ACID</span></h2>
-      </div>
-
-      <p>
-        A transaction is a unit of work the database treats as indivisible. ACID is
-        the shorthand for the guarantees a database makes about that work.
-      </p>
-
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-num">A</div>
-          <h3>Atomicity</h3>
-          <p>All operations succeed, or none of them do. No half-finished work survives a crash.</p>
-        </div>
-        <div class="card">
-          <div class="card-num">C</div>
-          <h3>Consistency</h3>
-          <p>Every transaction leaves the database in a valid state. Constraints hold before and after.</p>
-        </div>
-        <div class="card">
-          <div class="card-num">I</div>
-          <h3>Isolation</h3>
-          <p>Concurrent transactions don't see each other's intermediate state. The level is configurable.</p>
-        </div>
-        <div class="card">
-          <div class="card-num">D</div>
-          <h3>Durability</h3>
-          <p>Once committed, the change survives a power loss, a crash, a restart. The disk remembers.</p>
-        </div>
-      </div>
-
-      <h3 style="margin-top: 40px;">Isolation levels</h3>
-      <p>
-        Stricter isolation means less concurrency. Each level prevents certain
-        anomalies and permits others. Most engines default to Read Committed.
-      </p>
-
-      <div class="code">
-        <span class="code-label">Levels</span>
-<span class="kw">READ UNCOMMITTED</span>  <span class="com">// permits dirty reads</span>
-<span class="kw">READ COMMITTED</span>    <span class="com">// permits non-repeatable reads, phantom reads</span>
-<span class="kw">REPEATABLE READ</span>   <span class="com">// permits phantom reads</span>
-<span class="kw">SERIALIZABLE</span>      <span class="com">// permits nothing. As if run one at a time.</span>
-      </div>
-    </section>
-
-    <!-- ============ NOSQL ============ -->
-    <section id="nosql" class="reveal">
-      <div class="section-head">
-        <span class="section-num">08</span>
-        <h2>The NoSQL <span class="italic">landscape</span></h2>
-      </div>
-
-      <p>
-        NoSQL is not one thing. It's a loose family of databases that gave up some
-        of the relational model's strictness to gain something else — usually scale,
-        flexibility, or a closer match to a specific access pattern.
-      </p>
-
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-num">Document</div>
-          <h3>MongoDB, Couchbase</h3>
-          <p>Stores nested documents (typically JSON). Good when the shape of your data is the unit you read and write.</p>
-        </div>
-        <div class="card">
-          <div class="card-num">Key-Value</div>
-          <h3>Redis, DynamoDB</h3>
-          <p>The simplest possible model. Lookup by key, get value. Fast, narrow, often a cache.</p>
-        </div>
-        <div class="card">
-          <div class="card-num">Wide-Column</div>
-          <h3>Cassandra, ScyllaDB</h3>
-          <p>Rows have flexible column sets. Designed for writes at scale across distributed clusters.</p>
-        </div>
-        <div class="card">
-          <div class="card-num">Graph</div>
-          <h3>Neo4j, ArangoDB</h3>
-          <p>First-class edges between nodes. The right tool when relationships are the query.</p>
-        </div>
-      </div>
-
-      <div class="callout">
-        <div class="callout-label">CAP theorem</div>
         <p>
-          In a distributed system you get to pick two of consistency, availability,
-          and partition tolerance. Partitions happen whether you want them to or not,
-          so the real choice is between consistency and availability when the network
-          splits.
+          The work happens in two parallel tracks. One is conceptual: readings,
+          discussion posts, and interview-style questions to sharpen vocabulary
+          and intuition. The other is practical: a term-long project that begins
+          with an entity model on paper and ends with a working application
+          backed by a real database, deployed and queryable.
         </p>
+
+        <div class="callout">
+          <div class="callout-label">Working principle</div>
+          <p>
+            The schema is a hypothesis about how the world holds together.
+            Everything downstream — queries, indexes, application code, the
+            user experience itself — pays the price of getting it wrong, and
+            inherits the leverage of getting it right.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <span class="section-num">02</span>
+          <h2>Jump <span class="italic">in</span></h2>
+        </div>
+
+        <div class="jump-grid">
+          <a href="#assignments" class="jump page-link" data-page="assignments">
+            <div class="jump-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
+            </div>
+            <h3>Assignments</h3>
+            <p>Weekly deliverables and their write-ups</p>
+          </a>
+          <a href="#devlogs" class="jump page-link" data-page="devlogs">
+            <div class="jump-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>
+            </div>
+            <h3>Dev Logs</h3>
+            <p>What broke this week and what fixed it</p>
+          </a>
+          <a href="#blogs" class="jump page-link" data-page="blogs">
+            <div class="jump-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <h3>Discussion Blogs</h3>
+            <p>Long-form posts unpacking the readings</p>
+          </a>
+          <a href="#interviews" class="jump page-link" data-page="interviews">
+            <div class="jump-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4l4 4 4-4h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
+            </div>
+            <h3>Mock Interviews</h3>
+            <p>Database questions and worked answers</p>
+          </a>
+          <a href="#integrations" class="jump page-link" data-page="integrations">
+            <div class="jump-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            </div>
+            <h3>Integrations</h3>
+            <p>The tools and services stitched together</p>
+          </a>
+        </div>
+      </section>
+
+      <footer class="page-foot">
+        <div>AD350 · Database Technology · North Seattle College</div>
+        <div><a href="https://github.com/givecoffee/AD350" target="_blank" rel="noopener">github.com/givecoffee/AD350</a></div>
+      </footer>
+    </div>
+
+    <!-- ===================== ASSIGNMENTS ===================== -->
+    <div class="page" data-page="assignments">
+      <div class="page-header">
+        <div class="eyebrow"><span class="dot"></span>Coursework</div>
+        <h1><span class="italic">Assignments</span></h1>
+        <p>Each assignment listed with its scope, what was learned, and the link to the deliverable. Updated as the term moves.</p>
       </div>
-    </section>
 
-    <!-- ============ RESOURCES ============ -->
-    <section id="resources" class="reveal">
-      <div class="section-head">
-        <span class="section-num">09</span>
-        <h2><span class="italic">Resources</span></h2>
+      <div class="item-list">
+
+        <div class="item">
+          <div class="item-num">01</div>
+          <div class="item-body">
+            <div class="item-meta">Week 1 · Due Jan 14</div>
+            <h3>Environment setup &amp; first SELECT</h3>
+            <p>Install PostgreSQL locally, connect via the CLI, and write the first set of queries against a seeded sample database.</p>
+          </div>
+          <div class="status done">Done</div>
+        </div>
+
+        <div class="item">
+          <div class="item-num">02</div>
+          <div class="item-body">
+            <div class="item-meta">Week 2 · Due Jan 21</div>
+            <h3>Entity-relationship modeling</h3>
+            <p>Draw an ER diagram for a small library system. Capture cardinality, weak entities, and at least one many-to-many relationship.</p>
+          </div>
+          <div class="status done">Done</div>
+        </div>
+
+        <div class="item">
+          <div class="item-num">03</div>
+          <div class="item-body">
+            <div class="item-meta">Week 3 · Due Jan 28</div>
+            <h3>Schema implementation &amp; constraints</h3>
+            <p>Translate the ER diagram into a real schema. Add primary keys, foreign keys, NOT NULL, CHECK constraints, and seed data.</p>
+          </div>
+          <div class="status progress">In progress</div>
+        </div>
+
+        <div class="item">
+          <div class="item-num">04</div>
+          <div class="item-body">
+            <div class="item-meta">Week 4 · Due Feb 4</div>
+            <h3>Joins, aggregations, window functions</h3>
+            <p>Write a battery of analytical queries against the seeded schema. Compare query plans for each.</p>
+          </div>
+          <div class="status upcoming">Upcoming</div>
+        </div>
+
+        <div class="item">
+          <div class="item-num">05</div>
+          <div class="item-body">
+            <div class="item-meta">Week 5 · Due Feb 11</div>
+            <h3>Normalization to BCNF</h3>
+            <p>Take a deliberately messy schema, identify the anomalies, and walk it through 1NF, 2NF, 3NF, BCNF.</p>
+          </div>
+          <div class="status upcoming">Upcoming</div>
+        </div>
+
+        <div class="item">
+          <div class="item-num">06</div>
+          <div class="item-body">
+            <div class="item-meta">Week 6 · Due Feb 18</div>
+            <h3>Indexes &amp; query plans</h3>
+            <p>Profile slow queries, propose indexes, measure the impact. Defend each index with EXPLAIN output.</p>
+          </div>
+          <div class="status upcoming">Upcoming</div>
+        </div>
+
+        <div class="item">
+          <div class="item-num">07</div>
+          <div class="item-body">
+            <div class="item-meta">Week 7 · Due Feb 25</div>
+            <h3>Transactions &amp; concurrency</h3>
+            <p>Reproduce dirty reads, non-repeatable reads, and phantom reads. Demonstrate how each isolation level changes behavior.</p>
+          </div>
+          <div class="status upcoming">Upcoming</div>
+        </div>
+
+        <div class="item">
+          <div class="item-num">08</div>
+          <div class="item-body">
+            <div class="item-meta">Final · Due Mar 18</div>
+            <h3>Term project: full-stack app with a real schema</h3>
+            <p>Ship an application backed by a database designed and indexed for its actual access patterns. Deploy it.</p>
+          </div>
+          <div class="status upcoming">Upcoming</div>
+        </div>
+
       </div>
 
-      <p>
-        Things worth keeping a tab open to. The list grows over the term.
-      </p>
+      <footer class="page-foot">
+        <div>8 assignments · 2 complete · 1 in progress</div>
+        <div><a href="#home" class="page-link" data-page="home">← Home</a></div>
+      </footer>
+    </div>
 
-      <dl class="concept-table">
-        <div><dt>Use The Index, Luke</dt></div>
-        <div><dd>Markus Winand's guide to indexing. The single best practical resource on the topic.</dd></div>
-        <div><dt>PostgreSQL Docs</dt></div>
-        <div><dd>The reference. Worth reading the SQL chapter beginning to end at least once.</dd></div>
-        <div><dt>Designing Data-Intensive Applications</dt></div>
-        <div><dd>Kleppmann. The book to read when the course textbook isn't enough.</dd></div>
-        <div><dt>SQL for Smarties</dt></div>
-        <div><dd>Joe Celko on writing queries the way the language wants you to write them.</dd></div>
-      </dl>
-    </section>
-
-    <footer>
-      <div>NSC · App Development B.A.S. · Database Technology</div>
-      <div>
-        <a href="#overview">Back to top ↑</a>
+    <!-- ===================== DEV LOGS ===================== -->
+    <div class="page" data-page="devlogs">
+      <div class="page-header">
+        <div class="eyebrow"><span class="dot"></span>Weekly</div>
+        <h1>Dev <span class="italic">logs</span></h1>
+        <p>Running notes from building the term project. What broke, what fixed it, what's worth remembering for next time.</p>
       </div>
-    </footer>
+
+      <div class="log-entry">
+        <div class="log-date">Week 03<strong>Jan 28</strong></div>
+        <div class="log-body">
+          <h3>Foreign keys aren't free</h3>
+          <p>
+            Spent an afternoon chasing an insert error that turned out to be a foreign key
+            referencing a column that wasn't unique. The error message pointed at the
+            child table, but the fault was on the parent. The lesson: read the constraint
+            definition, not the column it complains about.
+          </p>
+          <p>
+            Also discovered that <strong>ON DELETE CASCADE</strong> propagates through
+            every layer of foreign key. One deletion at the top wiped four tables. This
+            is either a feature or a footgun depending on whether you meant it.
+          </p>
+          <div class="log-tags">
+            <span class="log-tag">PostgreSQL</span>
+            <span class="log-tag">Constraints</span>
+            <span class="log-tag">Debugging</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-date">Week 02<strong>Jan 21</strong></div>
+        <div class="log-body">
+          <h3>ER diagrams are arguments, not pictures</h3>
+          <p>
+            Started the library ER diagram thinking it would take an hour. Took most of
+            the weekend, because every relationship raised a question about how the
+            system actually behaves. Can a member borrow the same copy twice? Is a
+            reservation an entity or an attribute on a copy?
+          </p>
+          <p>
+            By the end, the diagram itself was almost beside the point. The real output
+            was the list of decisions documented next to it.
+          </p>
+          <div class="log-tags">
+            <span class="log-tag">ER Modeling</span>
+            <span class="log-tag">Design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-date">Week 01<strong>Jan 14</strong></div>
+        <div class="log-body">
+          <h3>psql is a better debugger than I expected</h3>
+          <p>
+            Set up Postgres locally and spent the first day fighting with the GUI tools
+            before giving up and learning the CLI. <strong>\d</strong>, <strong>\dt</strong>,
+            and <strong>\df</strong> handle 90% of what I was reaching for buttons to do.
+          </p>
+          <p>
+            Backslash commands feel arcane until they don't. Then they're faster than
+            anything else.
+          </p>
+          <div class="log-tags">
+            <span class="log-tag">Setup</span>
+            <span class="log-tag">PostgreSQL</span>
+            <span class="log-tag">CLI</span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-foot">
+        <div>Updated weekly</div>
+        <div><a href="#home" class="page-link" data-page="home">← Home</a></div>
+      </footer>
+    </div>
+
+    <!-- ===================== BLOGS ===================== -->
+    <div class="page" data-page="blogs">
+      <div class="page-header">
+        <div class="eyebrow"><span class="dot"></span>Long-form</div>
+        <h1>Discussion <span class="italic">blogs</span></h1>
+        <p>Longer posts unpacking course readings and ideas worth more than a forum comment. Each one is a working draft.</p>
+      </div>
+
+      <div class="blog-grid">
+
+        <article class="blog-card">
+          <div class="meta">Jan 22 · 8 min read</div>
+          <h3>Why the relational model won</h3>
+          <p>Codd's 1970 paper proposed something the industry resisted for a decade, then couldn't live without. A look at what made it durable when everything around it was reinventing itself.</p>
+          <a href="#" class="read">Read post →</a>
+        </article>
+
+        <article class="blog-card">
+          <div class="meta">Jan 29 · 6 min read</div>
+          <h3>The case against premature denormalization</h3>
+          <p>Denormalization is a real tool, but reaching for it before a query has been measured is how schemas die slowly. A defense of starting boring.</p>
+          <a href="#" class="read">Read post →</a>
+        </article>
+
+        <article class="blog-card">
+          <div class="meta">Feb 5 · 10 min read</div>
+          <h3>What ACID actually promises</h3>
+          <p>Most explanations of ACID list four words and stop. The interesting part is what each one doesn't guarantee, and what isolation levels you give up to scale.</p>
+          <a href="#" class="read">Read post →</a>
+        </article>
+
+        <article class="blog-card">
+          <div class="meta">Feb 12 · 7 min read</div>
+          <h3>Indexes as a contract with the planner</h3>
+          <p>An index isn't a setting. It's a promise to the query planner about how data will be accessed. Treating it that way changes which indexes you build.</p>
+          <a href="#" class="read">Read post →</a>
+        </article>
+
+      </div>
+
+      <footer class="page-foot">
+        <div>4 posts · more in draft</div>
+        <div><a href="#home" class="page-link" data-page="home">← Home</a></div>
+      </footer>
+    </div>
+
+    <!-- ===================== MOCK INTERVIEWS ===================== -->
+    <div class="page" data-page="interviews">
+      <div class="page-header">
+        <div class="eyebrow"><span class="dot"></span>Practice</div>
+        <h1>Mock <span class="italic">interviews</span></h1>
+        <p>Database questions of the kind asked in real interviews. Each one written out the way you'd actually answer at a whiteboard.</p>
+      </div>
+
+      <details class="qa">
+        <summary>
+          <span class="qa-num">Q01</span>
+          <span class="qa-q">What's the difference between a primary key and a unique constraint?</span>
+          <span class="qa-toggle">+</span>
+        </summary>
+        <div class="qa-a">
+          <p>A primary key uniquely identifies each row <em>and</em> implies <code>NOT NULL</code>. A unique constraint enforces uniqueness but permits one or more nulls, depending on the engine.</p>
+          <p>A table has at most one primary key but can have many unique constraints. Foreign keys conventionally reference the primary key, but most engines let them reference any unique column too.</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>
+          <span class="qa-num">Q02</span>
+          <span class="qa-q">Explain the difference between INNER, LEFT, RIGHT, and FULL OUTER JOIN.</span>
+          <span class="qa-toggle">+</span>
+        </summary>
+        <div class="qa-a">
+          <p><code>INNER JOIN</code> returns rows where the join condition matches on both sides. <code>LEFT JOIN</code> returns all rows from the left table and matching rows from the right (nulls where there's no match). <code>RIGHT JOIN</code> is the mirror image. <code>FULL OUTER JOIN</code> returns everything from both sides, with nulls where there's no match in either direction.</p>
+          <p>In practice, <code>LEFT JOIN</code> is the workhorse. <code>RIGHT JOIN</code> can almost always be rewritten as a <code>LEFT JOIN</code> with the tables swapped, which is easier to read.</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>
+          <span class="qa-num">Q03</span>
+          <span class="qa-q">What is a transaction, and what does ACID guarantee?</span>
+          <span class="qa-toggle">+</span>
+        </summary>
+        <div class="qa-a">
+          <p>A transaction is a unit of work the database treats as indivisible. ACID is the shorthand for four guarantees: <strong>Atomicity</strong> (all or nothing), <strong>Consistency</strong> (constraints hold before and after), <strong>Isolation</strong> (concurrent transactions don't see intermediate state), and <strong>Durability</strong> (committed work survives a crash).</p>
+          <p>Isolation is the only one that's tunable. Stricter isolation means less concurrency, so most engines default to Read Committed and let you opt up.</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>
+          <span class="qa-num">Q04</span>
+          <span class="qa-q">When would you choose NoSQL over a relational database?</span>
+          <span class="qa-toggle">+</span>
+        </summary>
+        <div class="qa-a">
+          <p>When the shape of the data, the access pattern, or the scale doesn't fit cleanly into rows and joins. Some honest examples: a key-value store as a cache where the only operation is "get by id." A document store when the natural unit of read and write is a deeply nested object. A graph store when the queries are mostly about traversing relationships several hops deep.</p>
+          <p>"NoSQL is faster" is usually the wrong answer. The right answer is that the data model fits the problem better.</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>
+          <span class="qa-num">Q05</span>
+          <span class="qa-q">What does an index actually do, and what's the cost?</span>
+          <span class="qa-toggle">+</span>
+        </summary>
+        <div class="qa-a">
+          <p>An index is a separate data structure (usually a B-tree) the database maintains alongside the table. It lets the engine find rows matching a predicate without scanning the whole table.</p>
+          <p>The cost is twofold. Indexes take space, and every insert, update, or delete on the table has to update the index too. So indexes speed up reads and slow down writes. The art is picking which columns are worth that tradeoff.</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary>
+          <span class="qa-num">Q06</span>
+          <span class="qa-q">Explain normalization. What's 3NF and when would you violate it?</span>
+          <span class="qa-toggle">+</span>
+        </summary>
+        <div class="qa-a">
+          <p>Normalization is the process of removing redundancy and update anomalies from a schema. Each normal form is stricter than the last. <strong>Third Normal Form</strong> requires every non-key column to depend on the key, the whole key, and nothing but the key.</p>
+          <p>You'd violate 3NF deliberately when reads are heavy enough that joins become a bottleneck and you've measured the cost. A denormalized analytics table, a precomputed aggregate, a flat read model on top of an event log. Always intentional, never by accident.</p>
+        </div>
+      </details>
+
+      <footer class="page-foot">
+        <div>6 questions · more to come</div>
+        <div><a href="#home" class="page-link" data-page="home">← Home</a></div>
+      </footer>
+    </div>
+
+    <!-- ===================== INTEGRATIONS ===================== -->
+    <div class="page" data-page="integrations">
+      <div class="page-header">
+        <div class="eyebrow"><span class="dot"></span>Stack</div>
+        <h1><span class="italic">Integrations</span></h1>
+        <p>The tools wired together to make the course project run. Each one chosen for a specific job, not because it was on a list.</p>
+      </div>
+
+      <section>
+        <div class="section-head">
+          <span class="section-num">01</span>
+          <h2>Data <span class="italic">layer</span></h2>
+        </div>
+
+        <div class="stack-grid">
+          <div class="stack-item">
+            <div class="stack-head">
+              <div class="stack-logo">Pg</div>
+              <div>
+                <div class="stack-name">PostgreSQL</div>
+                <div class="stack-role">Primary database</div>
+              </div>
+            </div>
+            <p>Relational. The reference implementation against which the course concepts get tested.</p>
+          </div>
+
+          <div class="stack-item">
+            <div class="stack-head">
+              <div class="stack-logo">Re</div>
+              <div>
+                <div class="stack-name">Redis</div>
+                <div class="stack-role">Cache layer</div>
+              </div>
+            </div>
+            <p>Key-value store for session state and hot-path query caching. A practical contrast to Postgres.</p>
+          </div>
+
+          <div class="stack-item">
+            <div class="stack-head">
+              <div class="stack-logo">Mo</div>
+              <div>
+                <div class="stack-name">MongoDB</div>
+                <div class="stack-role">Document store</div>
+              </div>
+            </div>
+            <p>For the parts of the project that are genuinely document-shaped. Used sparingly, by design.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <span class="section-num">02</span>
+          <h2>Application <span class="italic">layer</span></h2>
+        </div>
+
+        <div class="stack-grid">
+          <div class="stack-item">
+            <div class="stack-head">
+              <div class="stack-logo">Rx</div>
+              <div>
+                <div class="stack-name">React + TS</div>
+                <div class="stack-role">Frontend</div>
+              </div>
+            </div>
+            <p>Vite-powered build, Tailwind for utility CSS, Radix primitives where it matters.</p>
+          </div>
+
+          <div class="stack-item">
+            <div class="stack-head">
+              <div class="stack-logo">No</div>
+              <div>
+                <div class="stack-name">Node.js</div>
+                <div class="stack-role">API server</div>
+              </div>
+            </div>
+            <p>Express-style routing, parameterized queries, never string concatenation anywhere near SQL.</p>
+          </div>
+
+          <div class="stack-item">
+            <div class="stack-head">
+              <div class="stack-logo">Py</div>
+              <div>
+                <div class="stack-name">Python</div>
+                <div class="stack-role">Analytics &amp; scripts</div>
+              </div>
+            </div>
+            <p>Pandas for data exploration, ad-hoc scripts for seeding and migrations.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <span class="section-num">03</span>
+          <h2>Ops &amp; <span class="italic">infra</span></h2>
+        </div>
+
+        <div class="stack-grid">
+          <div class="stack-item">
+            <div class="stack-head">
+              <div class="stack-logo">Gh</div>
+              <div>
+                <div class="stack-name">GitHub Actions</div>
+                <div class="stack-role">CI / CD</div>
+              </div>
+            </div>
+            <p>Every push runs tests, every merge to main deploys. Confidence comes from automation.</p>
+          </div>
+
+          <div class="stack-item">
+            <div class="stack-head">
+              <div class="stack-logo">Cf</div>
+              <div>
+                <div class="stack-name">Cloudflare</div>
+                <div class="stack-role">DNS &amp; SSL</div>
+              </div>
+            </div>
+            <p>DNS, edge caching, automatic certificates. The boring infrastructure that should just work.</p>
+          </div>
+
+          <div class="stack-item">
+            <div class="stack-head">
+              <div class="stack-logo">Vp</div>
+              <div>
+                <div class="stack-name">RackNerd VPS</div>
+                <div class="stack-role">Host</div>
+              </div>
+            </div>
+            <p>Ubuntu 22.04, Nginx in front, self-managed. The course project lives on a real server.</p>
+          </div>
+
+          <div class="stack-item">
+            <div class="stack-head">
+              <div class="stack-logo">Ob</div>
+              <div>
+                <div class="stack-name">Obsidian</div>
+                <div class="stack-role">Notes</div>
+              </div>
+            </div>
+            <p>Where the messy thinking happens before any of it makes its way into this wiki.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="page-foot">
+        <div>10 integrations · evolving</div>
+        <div><a href="#home" class="page-link" data-page="home">← Home</a></div>
+      </footer>
+    </div>
 
   </main>
 
 </div>
 
 <script>
-  // ScrollSpy + reveal-on-scroll
-  const links = document.querySelectorAll('.nav-link');
-  const sections = document.querySelectorAll('main section, main header.hero');
-  const reveals = document.querySelectorAll('.reveal');
+  const pages = document.querySelectorAll('.page');
+  const links = document.querySelectorAll('.page-link');
 
-  const scrollSpy = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        links.forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
-        });
-      }
+  function showPage(pageId) {
+    pages.forEach(p => p.classList.toggle('active', p.dataset.page === pageId));
+    links.forEach(l => l.classList.toggle('active', l.dataset.page === pageId));
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    document.querySelector('aside').classList.remove('open');
+  }
+
+  function routeFromHash() {
+    const hash = window.location.hash.replace('#', '') || 'home';
+    const valid = ['home', 'assignments', 'devlogs', 'blogs', 'interviews', 'integrations'];
+    showPage(valid.includes(hash) ? hash : 'home');
+  }
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      const target = link.dataset.page;
+      if (target) setTimeout(() => showPage(target), 0);
     });
-  }, { rootMargin: '-30% 0px -60% 0px' });
+  });
 
-  sections.forEach(s => { if (s.id) scrollSpy.observe(s); });
+  window.addEventListener('hashchange', routeFromHash);
+  window.addEventListener('DOMContentLoaded', routeFromHash);
+  routeFromHash();
 
-  const revealer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        revealer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
+  const menuToggle = document.querySelector('.menu-toggle');
+  const sidebar = document.querySelector('aside');
+  menuToggle.addEventListener('click', () => sidebar.classList.toggle('open'));
 
-  reveals.forEach(r => revealer.observe(r));
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 900 &&
+        sidebar.classList.contains('open') &&
+        !sidebar.contains(e.target) &&
+        !menuToggle.contains(e.target)) {
+      sidebar.classList.remove('open');
+    }
+  });
 </script>
 
 </body>
