@@ -1,6 +1,6 @@
-```
+``
 You have been hired as the lead Data Engineer for **StreamFlix**. Your first task is to build a schema that can track movies, handle a sudden rebranding of your data columns, and demonstrate how you would manage a massive influx of temporary "watch-session" data.
-```
+``
 
 Right off the bat, I wanted to have some decent best practices in play. Since this assignment uses Supabase, I had to experiment with a little and see what some of the newer features could do since I had last seen it a couple years ago. I appreciate that is open-source and it has been a great experience learning to use it this quarter. Right out of the box, I had to make sure (even for small assignments) to get in the habit of enabling RLS and other security features. I also noticed when creating a table 'movies' for the streamflix database, that you can press CTRL+SHIFT+K to generate a query using plain language which was interesting to point out.
 
