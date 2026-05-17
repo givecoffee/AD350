@@ -62,3 +62,8 @@ Now, to DROP the table that is no longer needed:
 The dropped table is completely gone:
 
 ![table gone from supabase](../images/Pasted%20image%2020260516233443.png)
+
+Final Schema Screenshot:
+
+<img width="1161" height="281" alt="image" src="https://github.com/user-attachments/assets/a0d4b6e8-7bf4-4d19-8dcc-2dac9a01bdb0" />
+
