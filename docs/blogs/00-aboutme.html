@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me Q&A | AD350</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,800&family=JetBrains+Mono:wght@400;500;700&family=Geist:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    /* About Me Q&A specific styles */
+    .about-me-page {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-hero {
+      text-align: center;
+      margin-bottom: 48px;
+      padding: 40px 0;
+    }
+
+    .about-hero h1 {
+      font-size: 42px;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .about-hero p {
+      font-size: 18px;
+      color: var(--text-dim);
+      max-width: 600px;
+      margin: 0 auto 24px;
+    }
+
+    .name-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 24px;
+      background: var(--surface);
+      border-radius: 100px;
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--accent);
+      box-shadow: inset 1px 1px 2px var(--shadow-dark);
+      margin-top: 16px;
+    }
+
+    /* Q&A Dropdown Styles */
+    .qa-section {
+      margin-top: 40px;
+    }
+
+    .qa-section h2 {
+      font-size: 24px;
+      margin-bottom: 24px;
+      color: var(--text);
+      font-family: var(--display);
+      font-weight: 500;
+    }
+
+    .qa-item {
+      background: var(--surface);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+      transition: transform 0.3s ease;
+    }
+
+    .qa-item:hover {
+      transform: translateY(-2px);
+    }
+
+    .qa-question {
+      padding: 20px 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.2s;
+    }
+
+    .qa-question:hover {
+      background: rgba(94, 234, 212, 0.03);
+    }
+
+    .qa-question h3 {
+      font-size: 18px;
+      margin: 0;
+      color: var(--text);
+      font-weight: 500;
+      flex: 1;
+    }
+
+    .qa-question .q-number {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      background: var(--surface-2);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 16px;
+      flex-shrink: 0;
+      box-shadow: inset 1px 1px 2px var(--shadow-dark);
+    }
+
+    .qa-toggle {
+      font-size: 18px;
+      color: var(--text-faint);
+      transition: transform 0.3s ease, color 0.3s ease;
+      margin-left: 16px;
+      flex-shrink: 0;
+    }
+
+    .qa-item.expanded .qa-toggle {
+      transform: rotate(45deg);
+      color: var(--accent);
+    }
+
+    .qa-answer {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      background: var(--surface-2);
+      border-top: 1px solid var(--rule);
+    }
+
+    .qa-item.expanded .qa-answer {
+      max-height: 1000px;
+      opacity: 1;
+    }
+
+    .qa-content {
+      padding: 24px;
+    }
+
+    .qa-content p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .qa-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Quick Facts Grid */
+    .quick-facts {
+      margin: 40px 0;
+    }
+
+    .quick-facts h2 {
+      font-size: 24px;
+      margin-bottom: 24px;
+      color: var(--text);
+      font-family: var(--display);
+      font-weight: 500;
+    }
+
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .fact-card {
+      background: var(--surface);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+    }
+
+    .fact-card .emoji {
+      font-size: 32px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .fact-card h4 {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .fact-card p {
+      font-size: 14px;
+      margin: 0;
+      color: var(--text);
+    }
+
+    /* Controls */
+    .qa-controls {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+      justify-content: center;
+    }
+
+    .qa-controls button {
+      padding: 10px 20px;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .qa-controls button:hover {
+      background: var(--surface-2);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    .about-footer {
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+      text-align: center;
+    }
+
+    .signature {
+      font-family: var(--display);
+      font-size: 20px;
+      font-style: italic;
+      color: var(--accent);
+      margin: 24px 0;
+    }
+
+    /* Mobile styles */
+    @media (max-width: 900px) {
+      .about-hero h1 {
+        font-size: 32px;
+      }
+
+      .about-hero p {
+        font-size: 16px;
+      }
+
+      .qa-question {
+        padding: 16px 20px;
+      }
+
+      .qa-question h3 {
+        font-size: 16px;
+      }
+
+      .qa-content {
+        padding: 20px;
+      }
+
+      .qa-content p {
+        font-size: 15px;
+      }
+
+      .facts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .qa-controls {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="menu-toggle" aria-label="Menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+  </button>
+
+  <div class="layout">
+
+    <aside>
+      <a class="brand" href="../index.html">
+        <div class="brand-mark">DB</div>
+        <div class="brand-text">
+          AD350
+          <small>Database Tech</small>
+        </div>
+      </a>
+
+      <nav>
+        <h4>Main</h4>
+        <ul>
+          <li><a href="../index.html" data-page="index.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M3 12L12 3l9 9" />
+                <path d="M5 10v10h14V10" />
+              </svg>
+              Home
+            </a></li>
+          <li><a href="../assignments.html" data-page="assignments.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="5" y="3" width="14" height="18" rx="2" />
+                <path d="M9 8h6M9 12h6M9 16h4" />
+              </svg>
+              Assignments
+            </a></li>
+          <li><a href="../devlogs.html" data-page="devlogs.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <polyline points="8 6 2 12 8 18" />
+                <polyline points="16 6 22 12 16 18" />
+              </svg>
+              Dev Logs
+            </a></li>
+          <li><a href="../blogs.html" data-page="blogs.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path
+                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+              </svg>
+              Discussion Blogs
+            </a></li>
+          <li><a href="../interviews.html" data-page="interviews.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M20 2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4l4 4 4-4h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z" />
+              </svg>
+              Mock Interviews
+            </a></li>
+          <li><a href="../integrations.html" data-page="integrations.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="3" width="7" height="7" rx="1" />
+                <rect x="3" y="14" width="7" height="7" rx="1" />
+                <rect x="14" y="14" width="7" height="7" rx="1" />
+              </svg>
+              Integrations
+            </a></li>
+          <li><a href="../practicum.html" data-page="practicum.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path
+                  d="M21 7.5V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7.5M7 3.5h10a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2z" />
+                <path d="M12 12v5M12 17v2" />
+              </svg>
+              Practicum
+            </a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-foot">
+        Rae &middot; NSC<br>
+        <a href="https://github.com/givecoffee/AD350" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.9.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3" />
+          </svg>
+          github.com/givecoffee
+        </a>
+      </div>
+    </aside>
+
+    <main>
+      <article class="about-me-page">
+        <div class="about-hero">
+          <h1>About Me</h1>
+          <p>A quick Q&A to help you get to know me better. Click on any question to see my answer.</p>
+          <div class="name-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            Rachel "Rae" &middot; she/her
+          </div>
+        </div>
+
+        <!-- Quick Facts Section -->
+        <div class="quick-facts">
+          <h2>Quick Facts</h2>
+          <div class="facts-grid">
+            <div class="fact-card">
+              <span class="emoji">🎵</span>
+              <h4>Music</h4>
+              <p>RNB, Alt Rock, Soul</p>
+            </div>
+            <div class="fact-card">
+              <span class="emoji">🌍</span>
+              <h4>Travel Dreams</h4>
+              <p>Japan, Australia, Ireland</p>
+            </div>
+            <div class="fact-card">
+              <span class="emoji">🍗</span>
+              <h4>Food Love</h4>
+              <p>Nashville Hot Chicken & Waffles</p>
+            </div>
+        </div>
+
+        <!-- Q&A Section -->
+        <div class="qa-section">
+          <h2>Get to Know Me</h2>
+
+          <!-- Question 1 -->
+          <div class="qa-item">
+            <div class="qa-question">
+              <span class="q-number">01</span>
+              <h3>What's your name, and is there a particular nickname you prefer to go by?</h3>
+              <span class="qa-toggle">+</span>
+            </div>
+            <div class="qa-answer">
+              <div class="qa-content">
+                <p>Rachel, but I prefer to go by Rae as it is what my family and friends call me.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="qa-item">
+            <div class="qa-question">
+              <span class="q-number">02</span>
+              <h3>What's something interesting or unique about your background or family?</h3>
+              <span class="qa-toggle">+</span>
+            </div>
+            <div class="qa-answer">
+              <div class="qa-content">
+                <p>I grew up on a small farm in rural Tennessee. I also lived in different cities, from Nashville to San
+                  Diego. I currently live in the Seattle area.</p>
+                <p>My father and uncle were big on bluegrass and we were always playing something - whether it was a
+                  harmonica, banjo, steel drums, etc. I started playing mandolin as a kid, and now I split my time
+                  between guitar and uke.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="qa-item">
+            <div class="qa-question">
+              <span class="q-number">03</span>
+              <h3>Do you have any hobbies or interests that you're really passionate about?</h3>
+              <span class="qa-toggle">+</span>
+            </div>
+            <div class="qa-answer">
+              <div class="qa-content">
+                <p>I love playing stringed instruments, gardening, exploring, learning languages, and cooking. I am
+                  always looking for new ways to combine these interests in creative projects.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="qa-item">
+            <div class="qa-question">
+              <span class="q-number">04</span>
+              <h3>What do you hope to get out of this course?</h3>
+              <span class="qa-toggle">+</span>
+            </div>
+            <div class="qa-answer">
+              <div class="qa-content">
+                <p>I hope to learn best practices and make better architectural and backend design decisions. </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="qa-item">
+            <div class="qa-question">
+              <span class="q-number">05</span>
+              <h3>What's the last book you read or movie you watched that you enjoyed?</h3>
+              <span class="qa-toggle">+</span>
+            </div>
+            <div class="qa-answer">
+              <div class="qa-content">
+                <p>The last movie I saw was last week, and it was called Project Hail Mary. I highly recommend it,
+                  especially if you like space movies.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 6 -->
+          <div class="qa-item">
+            <div class="qa-question">
+              <span class="q-number">06</span>
+              <h3>Are you a morning person or a night owl, and why?</h3>
+              <span class="qa-toggle">+</span>
+            </div>
+            <div class="qa-answer">
+              <div class="qa-content">
+                <p>I am a little bit of both. From growing up on a farm, I naturally wake up at 5:30am without an alarm
+                  clock but if
+                  there are work shifts or other plans it can shift into me being more of a night owl since that is when
+                  I can have time
+                  alone to do classwork.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 7 -->
+          <div class="qa-item">
+            <div class="qa-question">
+              <span class="q-number">07</span>
+              <h3>f you could travel anywhere in the world, where would you go, and why?</h3>
+              <span class="qa-toggle">+</span>
+            </div>
+            <div class="qa-answer">
+              <div class="qa-content">
+                <p>I would visit Japan, Australia, and Ireland. These places have always fascinated me from a cultural
+                  and historical perspective. Australia has a unique ecosystem and rich indigenous culture as well.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 8 -->
+          <div class="qa-item">
+            <div class="qa-question">
+              <span class="q-number">08</span>
+              <h3>What's your favorite type of music, and do you have a favorite band or artist?</h3>
+              <span class="qa-toggle">+</span>
+            </div>
+            <div class="qa-answer">
+              <div class="qa-content">
+                <p>I love all types of music from RNB, Soul, to Alternative Rock. My favorite artist of all time would
+                  probably be
+                  Rihanna, and also a big fan of bands/artists like Alabama Shakes, Death Cab for Cutie, Jorja Smith,
+                  etc. I also grew
+                  up listening to a lot of Chris Cornell (Audioslave, Soundgarden, etc.) but I will also never skip a
+                  song by Curtis
+                  Mayfield or Donny Hathaway. </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 9 -->
+          <div class="qa-item">
+            <div class="qa-question">
+              <span class="q-number">09</span>
+              <h3>What's your go-to comfort food or favorite meal?</h3>
+              <span class="qa-toggle">+</span>
+            </div>
+            <div class="qa-answer">
+              <div class="qa-content">
+                <p>Nashville Hot Chicken (Hattie B’s recipe) with ideally waffles + hot honey. </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 10 -->
+          <div class="qa-item">
+            <div class="qa-question">
+              <span class="q-number">10</span>
+              <h3>Are you a cat person, a dog person, or neither?</h3>
+              <span class="qa-toggle">+</span>
+            </div>
+            <div class="qa-answer">
+              <div class="qa-content">
+                <p>Both! If I have a yard or neighborhood that is good for walking around, I prefer having a dog. If I
+                  have a busy lifestyle and need a more independent pet, cats are great for that.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Controls -->
+          <div class="qa-controls">
+            <button class="expand-all">Expand All</button>
+            <button class="collapse-all">Collapse All</button>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="about-footer">
+          <div class="signature">— Rae</div>
+          <div class="back-to-blogs">
+            <a href="../blogs.html" class="read">&larr; Back to All Blogs</a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+
+  <script src="../assets/app.js"></script>
+  <script>
+    // Q&A dropdown functionality
+    document.addEventListener('DOMContentLoaded', function () {
+      const questions = document.querySelectorAll('.qa-question');
+
+      questions.forEach(question => {
+        question.addEventListener('click', function () {
+          const qaItem = this.closest('.qa-item');
+          const answer = qaItem.querySelector('.qa-answer');
+          const toggle = this.querySelector('.qa-toggle');
+
+          // Toggle the expanded class
+          qaItem.classList.toggle('expanded');
+
+          // Update toggle text
+          if (qaItem.classList.contains('expanded')) {
+            toggle.textContent = '−';
+          } else {
+            toggle.textContent = '+';
+          }
+        });
+      });
+
+      // Expand/Collapse all buttons
+      document.querySelector('.expand-all').addEventListener('click', function () {
+        document.querySelectorAll('.qa-item').forEach(item => {
+          item.classList.add('expanded');
+          item.querySelector('.qa-toggle').textContent = '−';
+        });
+      });
+
+      document.querySelector('.collapse-all').addEventListener('click', function () {
+        document.querySelectorAll('.qa-item').forEach(item => {
+          item.classList.remove('expanded');
+          item.querySelector('.qa-toggle').textContent = '+';
+        });
+      });
+
+      // Open first question by default
+      if (document.querySelector('.qa-item')) {
+        const firstItem = document.querySelector('.qa-item');
+        firstItem.classList.add('expanded');
+        firstItem.querySelector('.qa-toggle').textContent = '−';
+      }
+    });
+  </script>
+  
+</body>
+
+</html>

@@ -53,6 +53,14 @@
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
           Integrations
         </a></li>
+        <li><a href="practicum.html" data-page="practicum.html">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path
+                d="M21 7.5V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7.5M7 3.5h10a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2z" />
+              <path d="M12 12v5M12 17v2" />
+            </svg>
+            Practicum
+          </a></li>
       </ul>
     </nav>
 
@@ -74,38 +82,107 @@
 
     <div class="blog-grid">
 
+      <!-- Blog 1 -->
       <article class="blog-card">
-        <div class="meta">Jan 22 &middot; 8 min read</div>
-        <h3>Why the relational model won</h3>
-        <p>Codd's 1970 paper proposed something the industry resisted for a decade, then couldn't live without. A look at what made it durable when everything around it was reinventing itself.</p>
-        <a href="#" class="read">Read post &rarr;</a>
+        <div class="blog-image-container">
+          <img src="https://cdn.raemaffei.com/images/1938750328.jpg" alt="Database schema diagram" loading="lazy">
+        </div>
+        <div class="blog-content">
+          <div class="meta">Week 1 · Apr 13, 2026</div>
+          <h3>Introducing Myself</h3>
+          <p>Introducing myself and sharing some quick facts about my background and interests.</p>
+          <a href="./blogs/00-aboutme.html" class="read">Read post &rarr;</a>
+        </div>
       </article>
 
+      <!-- Blog 2 -->
       <article class="blog-card">
-        <div class="meta">Jan 29 &middot; 6 min read</div>
-        <h3>The case against premature denormalization</h3>
-        <p>Denormalization is a real tool, but reaching for it before a query has been measured is how schemas die slowly. A defense of starting boring.</p>
-        <a href="#" class="read">Read post &rarr;</a>
+        <div class="blog-image-container">
+          <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Normalization diagram" loading="lazy">
+        </div>
+        <div class="blog-content">
+          <div class="meta">Week 2 · Apr 23, 2026</div>
+          <h3>Designing Tables with Appropriate Data Types</h3>
+          <p>This blog explores practical principles for designing effective database tables, illustrated with a real-world
+            reminders table example.</p>
+          <a href="./blogs/01-designingtables.html" class="read">Read post &rarr;</a>
+        </div>
       </article>
 
+      <!-- Blog 3 -->
       <article class="blog-card">
-        <div class="meta">Feb 5 &middot; 10 min read</div>
-        <h3>What ACID actually promises</h3>
-        <p>Most explanations of ACID list four words and stop. The interesting part is what each one doesn't guarantee, and what isolation levels you give up to scale.</p>
-        <a href="#" class="read">Read post &rarr;</a>
+        <div class="blog-image-container">
+          <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="ACID transactions diagram" loading="lazy">
+        </div>
+        <div class="blog-content">
+          <div class="meta">Apr 22 &middot; 10 min read</div>
+          <h3>What ACID Actually Promises (and What It Doesn't)</h3>
+          <p>Most explanations of ACID list the four words (Atomicity, Consistency, Isolation, Durability) and stop there. The interesting part is understanding what each guarantee provides and, more importantly, what it doesn't.</p>
+          <p>Atomicity ensures "all or nothing" operations, but it doesn't guarantee that concurrent transactions won't interfere with each other. That's where isolation levels come in.</p>
+          <a href="blogs/03-acid-promises.html" class="read">Read post &rarr;</a>
+        </div>
       </article>
 
+      <!-- Blog 4 -->
       <article class="blog-card">
-        <div class="meta">Feb 12 &middot; 7 min read</div>
-        <h3>Indexes as a contract with the planner</h3>
-        <p>An index isn't a setting. It's a promise to the query planner about how data will be accessed. Treating it that way changes which indexes you build.</p>
-        <a href="#" class="read">Read post &rarr;</a>
+        <div class="blog-image-container">
+          <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Database indexing visualization" loading="lazy">
+        </div>
+        <div class="blog-content">
+          <div class="meta">Apr 29 &middot; 7 min read</div>
+          <h3>Indexes as a Contract with the Query Planner</h3>
+          <p>An index isn't just a performance setting—it's a promise to the query planner about how data will be accessed. When you create an index, you're telling PostgreSQL: "I expect to query this column often, and here's how I'll use it."</p>
+          <p>The query planner uses these promises to build efficient execution plans. But indexes come with costs: storage overhead and write performance degradation.</p>
+          <a href="blogs/04-indexes-contract.html" class="read">Read post &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Blog 5 -->
+      <article class="blog-card">
+        <div class="blog-image-container">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="SQL vs NoSQL comparison" loading="lazy">
+        </div>
+        <div class="blog-content">
+          <div class="meta">May 6 &middot; 9 min read</div>
+          <h3>SQL vs NoSQL: It's Not Either/Or Anymore</h3>
+          <p>The early debates framed SQL and NoSQL as mutually exclusive choices. Today's reality is polyglot persistence—using different databases for different jobs within the same application.</p>
+          <p>PostgreSQL now offers JSONB for document storage, MongoDB has added ACID transactions, and many cloud databases offer hybrid approaches.</p>
+          <a href="blogs/05-sql-nosql.html" class="read">Read post &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Blog 6 -->
+      <article class="blog-card">
+        <div class="blog-image-container">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Cloud database architecture" loading="lazy">
+        </div>
+        <div class="blog-content">
+          <div class="meta">May 13 &middot; 8 min read</div>
+          <h3>The Shift to Managed Database Services</h3>
+          <p>Running your own database servers used to be a rite of passage. Today, managed services like AWS RDS, Google Cloud SQL, and Azure Database handle backups, scaling, patching, and replication.</p>
+          <p>This shift changes the DBA role from infrastructure maintenance to data architecture and optimization.</p>
+          <a href="blogs/06-managed-databases.html" class="read">Read post &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Blog 7 -->
+      <article class="blog-card">
+        <div class="blog-image-container">
+          <img src="https://images.unsplash.com/photo-1518432031357-db8fc5f56b6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Data modeling process" loading="lazy">
+        </div>
+        <div class="blog-content">
+          <div class="meta">May 20 &middot; 11 min read</div>
+          <h3>Data Modeling in the Age of Rapid Iteration</h3>
+          <p>Traditional data modeling emphasized getting the schema perfect upfront. Agile development and continuous deployment require a different approach—evolutionary database design.</p>
+          <p>Techniques like expand/contract migrations, versioned APIs, and backward-compatible schema changes allow databases to evolve alongside applications.</p>
+          <a href="blogs/07-data-modeling.html" class="read">Read post &rarr;</a>
+        </div>
       </article>
 
     </div>
 
     <footer class="page-foot">
-      <div>4 posts &middot; more in draft</div>
+      <div>7 posts &middot; Spring 2026</div>
       <div><a href="index.html">&larr; Home</a></div>
     </footer>
 

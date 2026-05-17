@@ -53,6 +53,14 @@
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
           Integrations
         </a></li>
+        <li><a href="practicum.html" data-page="practicum.html">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path
+                d="M21 7.5V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7.5M7 3.5h10a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2z" />
+              <path d="M12 12v5M12 17v2" />
+            </svg>
+            Practicum
+          </a></li>
       </ul>
     </nav>
 
@@ -69,7 +77,7 @@
     <div class="page-header">
       <div class="eyebrow"><span class="dot"></span>Stack</div>
       <h1><span class="italic">Integrations</span></h1>
-      <p>The tools wired together to make the course project run. Each one chosen for a specific job, not because it was on a list.</p>
+      <p>The tools wired together for this course. Each chosen for a specific purpose, not because it looked good on paper.</p>
     </div>
 
     <section>
@@ -81,24 +89,24 @@
       <div class="stack-grid">
         <div class="stack-item">
           <div class="stack-head">
-            <div class="stack-logo">Pg</div>
+            <div class="stack-logo">Sb</div>
             <div>
-              <div class="stack-name">PostgreSQL</div>
-              <div class="stack-role">Primary database</div>
+              <div class="stack-name">Supabase</div>
+              <div class="stack-role">Postgres backend</div>
             </div>
           </div>
-          <p>Relational. The reference implementation against which the course concepts get tested.</p>
+          <p>Hosted Postgres with instant REST API. Where the course concepts meet real implementation.</p>
         </div>
 
         <div class="stack-item">
           <div class="stack-head">
-            <div class="stack-logo">Re</div>
+            <div class="stack-logo">Pg</div>
             <div>
-              <div class="stack-name">Redis</div>
-              <div class="stack-role">Cache layer</div>
+              <div class="stack-name">PostgreSQL</div>
+              <div class="stack-role">Relational database</div>
             </div>
           </div>
-          <p>Key-value store for session state and hot-path query caching. A practical contrast to Postgres.</p>
+          <p>The underlying engine. Tables, joins, constraints, transactions. Everything the course teaches.</p>
         </div>
 
         <div class="stack-item">
@@ -109,7 +117,7 @@
               <div class="stack-role">Document store</div>
             </div>
           </div>
-          <p>For the parts of the project that are genuinely document-shaped. Used sparingly, by design.</p>
+          <p>For understanding the document model. Explored through course examples and assignments.</p>
         </div>
       </div>
     </section>
@@ -117,41 +125,41 @@
     <section>
       <div class="section-head">
         <span class="section-num">02</span>
-        <h2>Application <span class="italic">layer</span></h2>
+        <h2>Frontend <span class="italic">layer</span></h2>
       </div>
 
       <div class="stack-grid">
         <div class="stack-item">
           <div class="stack-head">
-            <div class="stack-logo">Rx</div>
+            <div class="stack-logo">Ht</div>
             <div>
-              <div class="stack-name">React + TS</div>
-              <div class="stack-role">Frontend</div>
+              <div class="stack-name">HTML5</div>
+              <div class="stack-role">Structure</div>
             </div>
           </div>
-          <p>Vite-powered build, Tailwind for utility CSS, Radix primitives where it matters.</p>
+          <p>Semantic markup. No framework overhead, just clean structure and accessibility.</p>
         </div>
 
         <div class="stack-item">
           <div class="stack-head">
-            <div class="stack-logo">No</div>
+            <div class="stack-logo">Cs</div>
             <div>
-              <div class="stack-name">Node.js</div>
-              <div class="stack-role">API server</div>
+              <div class="stack-name">CSS</div>
+              <div class="stack-role">Design</div>
             </div>
           </div>
-          <p>Express-style routing, parameterized queries, never string concatenation anywhere near SQL.</p>
+          <p>Custom properties, fluid typography, responsive grid. Handwritten, not generated.</p>
         </div>
 
         <div class="stack-item">
           <div class="stack-head">
-            <div class="stack-logo">Py</div>
+            <div class="stack-logo">Js</div>
             <div>
-              <div class="stack-name">Python</div>
-              <div class="stack-role">Analytics &amp; scripts</div>
+              <div class="stack-name">JavaScript</div>
+              <div class="stack-role">Interaction</div>
             </div>
           </div>
-          <p>Pandas for data exploration, ad-hoc scripts for seeding and migrations.</p>
+          <p>Vanilla JS for navigation state and mobile menu. No build step required.</p>
         </div>
       </div>
     </section>
@@ -159,7 +167,7 @@
     <section>
       <div class="section-head">
         <span class="section-num">03</span>
-        <h2>Ops &amp; <span class="italic">infra</span></h2>
+        <h2>Hosting &amp; <span class="italic">deployment</span></h2>
       </div>
 
       <div class="stack-grid">
@@ -167,50 +175,112 @@
           <div class="stack-head">
             <div class="stack-logo">Gh</div>
             <div>
-              <div class="stack-name">GitHub Actions</div>
-              <div class="stack-role">CI / CD</div>
+              <div class="stack-name">GitHub Pages</div>
+              <div class="stack-role">Static hosting</div>
             </div>
           </div>
-          <p>Every push runs tests, every merge to main deploys. Confidence comes from automation.</p>
+          <p>Automated deployment from the repo. Push to main, site updates. Zero configuration.</p>
         </div>
 
+        <div class="stack-item">
+          <div class="stack-head">
+            <div class="stack-logo">Git</div>
+            <div>
+              <div class="stack-name">Git</div>
+              <div class="stack-role">Version control</div>
+            </div>
+          </div>
+          <p>Every change tracked. History is documentation.</p>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-head">
+            <div class="stack-logo">Gf</div>
+            <div>
+              <div class="stack-name">Google Fonts</div>
+              <div class="stack-role">Typography</div>
+            </div>
+          </div>
+          <p>Fraunces for headings, Geist for body, JetBrains Mono for code. Loaded from CDN.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2>Edge &amp; <span class="italic">delivery</span></h2>
+      </div>
+
+      <div class="stack-grid">
         <div class="stack-item">
           <div class="stack-head">
             <div class="stack-logo">Cf</div>
             <div>
               <div class="stack-name">Cloudflare</div>
-              <div class="stack-role">DNS &amp; SSL</div>
+              <div class="stack-role">Proxy &amp; CDN</div>
             </div>
           </div>
-          <p>DNS, edge caching, automatic certificates. The boring infrastructure that should just work.</p>
+          <p>DNS, SSL, edge caching. The layer between visitors and GitHub Pages that makes everything faster.</p>
         </div>
 
         <div class="stack-item">
           <div class="stack-head">
-            <div class="stack-logo">Vp</div>
+            <div class="stack-logo">R2</div>
             <div>
-              <div class="stack-name">RackNerd VPS</div>
-              <div class="stack-role">Host</div>
+              <div class="stack-name">Cloudflare R2</div>
+              <div class="stack-role">Object storage</div>
             </div>
           </div>
-          <p>Ubuntu 22.04, Nginx in front, self-managed. The course project lives on a real server.</p>
+          <p>Blog images and static assets. S3-compatible API, zero egress fees, global distribution.</p>
         </div>
+      </div>
+    </section>
 
+    <section>
+      <div class="section-head">
+        <span class="section-num">05</span>
+        <h2>Workflow &amp; <span class="italic">notes</span></h2>
+      </div>
+
+      <div class="stack-grid">
         <div class="stack-item">
           <div class="stack-head">
             <div class="stack-logo">Ob</div>
             <div>
               <div class="stack-name">Obsidian</div>
-              <div class="stack-role">Notes</div>
+              <div class="stack-role">Documentation</div>
             </div>
           </div>
-          <p>Where the messy thinking happens before any of it makes its way into this wiki.</p>
+          <p>Where rough thinking becomes structured notes before it reaches this site.</p>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-head">
+            <div class="stack-logo">Vs</div>
+            <div>
+              <div class="stack-name">VS Code</div>
+              <div class="stack-role">Editor</div>
+            </div>
+          </div>
+          <p>The workspace where everything gets written, tested, and refined.</p>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-head">
+            <div class="stack-logo">Md</div>
+            <div>
+              <div class="stack-name">Markdown</div>
+              <div class="stack-role">Content format</div>
+            </div>
+          </div>
+          <p>Plain text with structure. Easy to version, easy to read, easy to convert.</p>
         </div>
       </div>
     </section>
 
     <footer class="page-foot">
-      <div>10 integrations &middot; evolving</div>
+      <div>12 integrations &middot; intentional</div>
       <div><a href="index.html">&larr; Home</a></div>
     </footer>
 

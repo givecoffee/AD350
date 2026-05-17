@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designing Database Tables | AD350 Database Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,800&family=JetBrains+Mono:wght@400;500;700&family=Geist:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+
+<body>
+
+  <button class="menu-toggle" aria-label="Menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+  </button>
+
+  <div class="layout">
+
+    <aside>
+      <a class="brand" href="../index.html">
+        <div class="brand-mark">DB</div>
+        <div class="brand-text">
+          AD350
+          <small>Database Tech</small>
+        </div>
+      </a>
+
+      <nav>
+        <h4>Main</h4>
+        <ul>
+          <li><a href="../index.html" data-page="index.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M3 12L12 3l9 9" />
+                <path d="M5 10v10h14V10" />
+              </svg>
+              Home
+            </a></li>
+          <li><a href="../assignments.html" data-page="assignments.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="5" y="3" width="14" height="18" rx="2" />
+                <path d="M9 8h6M9 12h6M9 16h4" />
+              </svg>
+              Assignments
+            </a></li>
+          <li><a href="../devlogs.html" data-page="devlogs.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <polyline points="8 6 2 12 8 18" />
+                <polyline points="16 6 22 12 16 18" />
+              </svg>
+              Dev Logs
+            </a></li>
+          <li><a href="../blogs.html" data-page="blogs.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path
+                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+              </svg>
+              Discussion Blogs
+            </a></li>
+          <li><a href="../interviews.html" data-page="interviews.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M20 2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4l4 4 4-4h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z" />
+              </svg>
+              Mock Interviews
+            </a></li>
+          <li><a href="../integrations.html" data-page="integrations.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="3" width="7" height="7" rx="1" />
+                <rect x="3" y="14" width="7" height="7" rx="1" />
+                <rect x="14" y="14" width="7" height="7" rx="1" />
+              </svg>
+              Integrations
+            </a></li>
+          <li><a href="../practicum.html" data-page="practicum.html">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path
+                  d="M21 7.5V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7.5M7 3.5h10a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2z" />
+                <path d="M12 12v5M12 17v2" />
+              </svg>
+              Practicum
+            </a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-foot">
+        Rae &middot; NSC<br>
+        <a href="https://github.com/givecoffee/AD350" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.9.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3" />
+          </svg>
+          github.com/givecoffee
+        </a>
+      </div>
+    </aside>
+
+    <main>
+      <!-- Blog Post Header -->
+      <header class="page-header">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          Discussion Blog · AD350
+        </div>
+        <h1>Designing Tables with Appropriate Data Types</h1>
+        <div class="blog-post-meta">
+          <span class="date">Published: April 19, 2026</span>
+        </div>
+        
+        <!-- Blog Post Tags -->
+        <div class="log-tags" style="margin-top: 20px;">
+          <span class="log-tag">SQL</span>
+          <span class="log-tag">Database Design</span>
+          <span class="log-tag">Normalization</span>
+          <span class="log-tag">Entity-Relationship</span>
+        </div>
+      </header>
+
+      <!-- Blog Post Content -->
+      <article class="blog-post-content">
+        <!-- Blog post image/feature -->
+        <div class="blog-image-container" style="margin-bottom: 40px; border-radius: 12px;">
+          <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Database schema diagram">
+        </div>
+        
+        <p><strong>Introduction:</strong> In my database journey, I've come to appreciate that good table design is more art than science. It's about finding the right balance between performance, maintainability, and clarity. This post reflects on my experiences with designing tables for various projects and the principles I've found most valuable.</p>
+
+        <h2>The Foundation: Understanding Your Data</h2>
+        <p>Before writing any CREATE TABLE statement, I've learned to ask fundamental questions about the data:</p>
+        
+        <ul class="learnings">
+          <li>What entities does my application need to track?</li>
+          <li>What relationships exist between these entities?</li>
+          <li>What queries will be most common?</li>
+          <li>How will the data grow over time?</li>
+          <li>What constraints are inherent to the business logic?</li>
+        </ul>
+
+        <div class="callout">
+          <div class="callout-label">Key Insight</div>
+          <p>Design tables based on how data will be used, not just how it will be stored. The most elegant schema is useless if it makes common queries inefficient.</p>
+        </div>
+
+        <h3>Primary Keys: More Than Just Identifiers</h3>
+        <p>Choosing the right primary key has significant implications. Natural keys (like email addresses) vs. surrogate keys (auto-incrementing integers) is a debate every database designer faces.</p>
+
+        <p>From my experience, I lean toward surrogate keys for most tables because:</p>
+        
+        <pre><code>
+CREATE TABLE users (
+  user_id SERIAL PRIMARY KEY,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  username VARCHAR(50) UNIQUE NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+</code></pre>
+
+        <h2>Normalization: Finding the Right Level</h2>
+        <p>The normalization process—organizing data to reduce redundancy—is crucial but often misunderstood. I've found that third normal form (3NF) is usually sufficient for most applications, striking a good balance between data integrity and query complexity.</p>
+
+        <p>A common anti-pattern I've encountered:</p>
+        
+        <pre><code>-- Problem: Denormalized order table
+CREATE TABLE orders (
+  order_id SERIAL PRIMARY KEY,
+  customer_name VARCHAR(100),
+  customer_address TEXT,
+  customer_city VARCHAR(50),
+  -- Repeated customer data for each order
+  -- Violates 2NF and 3NF
+);
+
+-- Solution: Normalized approach
+CREATE TABLE customers (
+  customer_id SERIAL PRIMARY KEY,
+  name VARCHAR(100),
+  address TEXT,
+  city VARCHAR(50)
+);
+
+CREATE TABLE orders (
+  order_id SERIAL PRIMARY KEY,
+  customer_id INTEGER REFERENCES customers(customer_id),
+  order_date DATE NOT NULL
+);</code></pre>
+
+        <h3>When to Denormalize</h3>
+        <p>There are valid reasons to denormalize data, particularly for read-heavy applications where query performance is critical:</p>
+        
+        <div class="callout">
+          <div class="callout-label">Performance vs. Integrity</div>
+          <p>Denormalization trades some data integrity for improved read performance. Always document these decisions and consider using database triggers or application logic to maintain consistency.</p>
+        </div>
+
+        <h2>Data Types: Choose Wisely</h2>
+        <p>Selecting appropriate data types impacts storage efficiency and data integrity:</p>
+        
+        <ul class="learnings">
+          <li><strong>VARCHAR vs. TEXT:</strong> Use VARCHAR when you have a reasonable maximum length; TEXT for potentially large, variable content</li>
+          <li><strong>INT vs. BIGINT:</strong> Consider future growth—migrating from INT to BIGINT can be painful</li>
+          <li><strong>DATE/TIME vs. TIMESTAMP:</strong> Use DATE for dates only, TIMESTAMP for precise moments</li>
+          <li><strong>DECIMAL vs. FLOAT:</strong> DECIMAL for exact precision (money), FLOAT for approximate values</li>
+        </ul>
+
+        <!-- NEW CONTENT: Practical Example - Reminders Table -->
+        <h3>Practical Example: A Reminders Table</h3>
+        <p>In a recent assignment, I designed a reminders table for tracking gardening tasks. This table demonstrates practical considerations for real-world applications:</p>
+        
+        <pre><code>CREATE TABLE reminders (
+    id          SERIAL PRIMARY KEY,
+    user_id     UUID NOT NULL
+                REFERENCES users(id)
+                ON DELETE CASCADE,
+    title       VARCHAR(120)    NOT NULL,
+    due_date    DATE            NOT NULL,
+    is_done     BOOLEAN         DEFAULT FALSE,
+    notes       TEXT,
+    created_at  TIMESTAMP       DEFAULT NOW(),
+    updated_at  TIMESTAMP       DEFAULT NOW()
+);</code></pre>
+
+        <h4>Design Rationale for the Reminders Table</h4>
+        <p>Each column was chosen with specific use cases and performance considerations in mind:</p>
+        
+        <ul class="learnings">
+          <li><strong>SERIAL for id:</strong> Reminders per user aren't expected to be excessively large, making SERIAL appropriate for this use case.</li>
+          <li><strong>UUID for user_id:</strong> Using UUID avoids collisions across inserts and provides better security than sequential integers by making IDs harder to guess.</li>
+          <li><strong>ON DELETE CASCADE:</strong> This ensures clean deletion of reminders when users delete their accounts, maintaining referential integrity.</li>
+          <li><strong>VARCHAR(120) for title:</strong> Provides enough characters for descriptive titles like "prune the plum tree" or "hang kitchen herbs on drying rack" without excessive storage overhead.</li>
+          <li><strong>DATE for due_date:</strong> Perfect for calendar-based reminders rather than minute-precision tasks. DATE is smaller and easier to filter than timestamps for day-based queries.</li>
+          <li><strong>BOOLEAN for is_done:</strong> The simplest way to track completion status, enabling efficient queries to show/hide finished items.</li>
+          <li><strong>TEXT for notes:</strong> Allows flexible storage of additional information like gardening tools needed or specific yard locations.</li>
+          <li><strong>Timestamps for created_at/updated_at:</strong> Essential for sorting and filtering by recent activity, with potential for automatic updates via triggers.</li>
+        </ul>
+
+        <div class="callout">
+          <div class="callout-label">Future Considerations</div>
+          <p>The most likely future enhancement for this reminders table would be a repeating reminder feature. This could be implemented with an additional VARCHAR column storing recurrence patterns (daily, weekly, monthly) rather than building an entire scheduling system from scratch.</p>
+        </div>
+        <!-- END NEW CONTENT -->
+
+        <h2>Indexing Strategy</h2>
+        <p>Indexes are crucial for performance but come with overhead. My approach:</p>
+        
+        <pre><code>-- Essential indexes for common queries
+CREATE INDEX idx_orders_customer_date 
+ON orders(customer_id, order_date DESC);
+
+-- Partial indexes for filtered queries
+CREATE INDEX idx_active_users 
+ON users(user_id) WHERE is_active = true;
+
+-- Unique constraints as implicit indexes
+ALTER TABLE products 
+ADD CONSTRAINT unique_product_sku UNIQUE (sku);</code></pre>
+
+        <h2>Foreign Keys and Referential Integrity</h2>
+        <p>I always use foreign key constraints unless there's a compelling performance reason not to. They:</p>
+        
+        <ul class="learnings">
+          <li>Enforce data integrity at the database level</li>
+          <li>Document relationships clearly</li>
+          <li>Can cascade updates/deletes when appropriate</li>
+          <li>Help with query optimization through join elimination</li>
+        </ul>
+
+        <div class="callout">
+          <div class="callout-label">Cascade Considerations</div>
+          <p>Use ON DELETE CASCADE cautiously. Sometimes SET NULL or RESTRICT better preserves data history and prevents accidental mass deletions.</p>
+        </div>
+
+        <h2>Documentation Within the Schema</h2>
+        <p>I've found that adding comments to tables and columns pays dividends:</p>
+        
+        <pre><code>COMMENT ON TABLE orders IS 'Customer purchase orders with line items';
+COMMENT ON COLUMN orders.order_status IS 
+'Valid values: pending, processing, shipped, delivered, cancelled';</code></pre>
+
+        <h2>Conclusion: Iterative Design</h2>
+        <p>Table design isn't a one-time activity. As applications evolve, schemas need refinement. I maintain a practice of:</p>
+        
+        <ul class="learnings">
+          <li>Regularly reviewing query performance patterns</li>
+          <li>Monitoring storage growth and access patterns</li>
+          <li>Documenting schema changes with migration scripts</li>
+          <li>Testing schema changes in staging before production</li>
+        </ul>
+
+        <p>The most valuable lesson I've learned: <strong>design for change</strong>. Databases live as long as applications, and a flexible, well-documented schema is easier to evolve than a "perfect" but rigid one.</p>
+      </article>
+
+      <!-- Related Content or Navigation -->
+      <div class="blog-post-footer" style="margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--rule);">
+        <h3 style="font-size: 18px; margin-bottom: 20px;">More Discussion Blogs</h3>
+        <div class="blog-grid">
+          <a href="00-aboutme.html" class="blog-card">
+            <div class="blog-image-container">
+              <img src="https://cdn.raemaffei.com/images/1938750328.jpg" alt="About me">
+            </div>
+            <div class="blog-content">
+              <div class="meta">Apr 13, 2026</div>
+              <h3>Introducing Myself</h3>
+              <p>Getting to know me through a Q&A format covering background, interests, and database experience.</p>
+              <span class="read">Read Post →</span>
+            </div>
+          </a>
+          <a href="../blogs.html" class="blog-card">
+            <div class="blog-image-container">
+              <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="All blogs">
+            </div>
+            <div class="blog-content">
+              <div class="meta">View All</div>
+              <h3>All Discussion Blogs</h3>
+              <p>Return to the main blog listing to explore all database technology discussion posts.</p>
+              <span class="read">View All →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <footer class="page-foot">
+        <div>AD350 · Database Technology · North Seattle College</div>
+        <div><a href="https://github.com/givecoffee/AD350" target="_blank"
+            rel="noopener">github.com/givecoffee/AD350</a></div>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="../assets/app.js"></script>
+</body>
+
+</html>
