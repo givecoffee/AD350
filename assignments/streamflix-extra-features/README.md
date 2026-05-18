@@ -17,9 +17,9 @@ ALTER TABLE movies
 ADD COLUMN details JSONB DEFAULT '{}';
 ```
 
-![Adding JSONB column](images/Pasted_image_20260517204351.png)
+![Adding JSONB column](https://raw.githubusercontent.com/givecoffee/ad350/main/assignments/streamflix-extra-features/images/Pasted_image_20260517204351.png)
 
-![Details column added](images/Pasted_image_20260517204441.png)
+![Details column added](https://raw.githubusercontent.com/givecoffee/ad350/main/assignments/streamflix-extra-features/images/Pasted_image_20260517204441.png)
 
 Details (JSONB) has been added to the movies table so now we can update two separate movies with very different types of information.
 
@@ -35,11 +35,11 @@ SET details = '{"resolution": "4K", "audio": "Dolby Atmos", "cast": ["Matthew Mc
 WHERE title = 'Interstellar';
 ```
 
-![Updating Interstellar](images/Pasted_image_20260517204813.png)
+![Updating Interstellar](https://raw.githubusercontent.com/givecoffee/ad350/main/assignments/streamflix-extra-features/images/Pasted_image_20260517204813.png)
 
 Interstellar now has updated technical and casting details:
 
-![Interstellar details](images/Pasted_image_20260517204909.png)
+![Interstellar details](https://raw.githubusercontent.com/givecoffee/ad350/main/assignments/streamflix-extra-features/images/Pasted_image_20260517204909.png)
 
 ### Fight Club: Director and Cast
 
@@ -55,11 +55,11 @@ SET details = jsonb_build_object(
 WHERE title = 'Fight Club';
 ```
 
-![Updating Fight Club](images/Pasted_image_20260517205819.png)
+![Updating Fight Club](https://raw.githubusercontent.com/givecoffee/ad350/main/assignments/streamflix-extra-features/images/Pasted_image_20260517205819.png)
 
 Here is the return after adding extra details like an added rating and cast members:
 
-![Fight Club details](images/Pasted_image_20260517205840.png)
+![Fight Club details](https://raw.githubusercontent.com/givecoffee/ad350/main/assignments/streamflix-extra-features/images/Pasted_image_20260517205840.png)
 
 ## Task 3: Querying the Hidden Data
 
@@ -75,7 +75,7 @@ WHERE details->>'director' IS NOT NULL;
 
 Movies with Named Directors:
 
-![Movies with directors](images/Pasted_image_20260517210057.png)
+![Movies with directors](https://raw.githubusercontent.com/givecoffee/ad350/main/assignments/streamflix-extra-features/images/Pasted_image_20260517210057.png)
 
 ### Action B: Containment Operator (`@>`)
 
@@ -87,7 +87,7 @@ WHERE details->'cast' @> '["Brad Pitt"]';
 
 And cast members with Brad Pitt in them:
 
-![Movies with Brad Pitt](images/Pasted_image_20260517210136.png)
+![Movies with Brad Pitt](https://raw.githubusercontent.com/givecoffee/ad350/main/assignments/streamflix-extra-features/images/Pasted_image_20260517210136.png)
 
 ### Testing JSON vs JSONB Build Object
 
@@ -101,7 +101,7 @@ SET details = '{"director": "Christopher Nolan", "resolution": "4K", "audio": "D
 WHERE title = 'Interstellar';
 ```
 
-![Director added to Interstellar](images/Pasted_image_20260517210641.png)
+![Director added to Interstellar](https://raw.githubusercontent.com/givecoffee/ad350/main/assignments/streamflix-extra-features/images/Pasted_image_20260517210641.png)
 
 When checking what it looks like with the SQL statement below, it appears it came back as the JSONB data type, which reflects the changes we made earlier. This is good! Was an interesting test to make sure everything was the same.
 
@@ -111,7 +111,7 @@ FROM movies
 WHERE title = 'Interstellar';
 ```
 
-![Type check](images/Pasted_image_20260517210846.png)
+![Type check](https://raw.githubusercontent.com/givecoffee/ad350/main/assignments/streamflix-extra-features/images/Pasted_image_20260517210846.png)
 
 Updating using json build object (just to be sure):
 
@@ -128,7 +128,7 @@ WHERE title = 'Interstellar';
 
 The output was the same:
 
-![Same output](images/Pasted_image_20260517211158.png)
+![Same output](https://raw.githubusercontent.com/givecoffee/ad350/main/assignments/streamflix-extra-features/images/Pasted_image_20260517211158.png)
 
 ### The Lion King: Voice Cast
 
@@ -162,7 +162,7 @@ FROM movies
 WHERE details->'voice_cast' @> '["James Earl Jones"]';
 ```
 
-![Lion King voice cast query](images/Pasted_image_20260517211923.png)
+![Lion King voice cast query](https://raw.githubusercontent.com/givecoffee/ad350/main/assignments/streamflix-extra-features/images/Pasted_image_20260517211923.png)
 
 All working!
 
@@ -191,11 +191,11 @@ FROM movies
 WHERE details->'voice_cast' @> '["James Earl Jones"]';
 ```
 
-![EXPLAIN output](images/Pasted_image_20260517212518.png)
+![EXPLAIN output](https://raw.githubusercontent.com/givecoffee/ad350/main/assignments/streamflix-extra-features/images/Pasted_image_20260517212518.png)
 
 ## Final Result
 
-![Final table state](images/Pasted_image_20260517212833.png)
+![Final table state](https://raw.githubusercontent.com/givecoffee/ad350/main/assignments/streamflix-extra-features/images/Pasted_image_20260517212833.png)
 
 ## Complete SQL Script
 
