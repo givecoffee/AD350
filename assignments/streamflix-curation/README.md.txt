@@ -1,0 +1,1 @@
+Write precise PostgreSQL queries to filter a movie catalog based on specific dates, text patterns, and missing records.
