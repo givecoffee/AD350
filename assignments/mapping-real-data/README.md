@@ -1,5 +1,7 @@
 ## Week 2 Devlog - Mapping Real Data 
 
+Video Demo - https://www.youtube.com/watch?v=4uc9YTbF57Y 
+
 I was excited to work on this project of developing a community garden management system, as I love to garden and I have been wanting to create a hybrid app for tracking both indoor and outdoor plants. It's always good to try and solve problems you already have or can understand. For this project, we will be going back to Supabase and creating a table called 'plants'. I was given data points and have to determine the best PostgreSQL type for each and explain my reasoning for choosing it for those use cases. This also gives me an opportunity to start thinking about scale. Personally, I own a VPS as a cost effective solution for hosting apps/websites. I will be creating the schema for the garden app and then hosting the Docker container on the server. I want the actual final version of my personal app, which is in a similar category, to have a mirrored database that is stored on the user's device so that it can be used offline. 
 
 I generated fake user data using Mockaroo.com to help with the mock interviews feel more real, as you are trying to solve a real problem of large and messy datasets. Setting up your logic for data types early on is really important. I wanted to again get in the practice of keeping Row Level Security set to ON, and I think it is turned off by default. Either way, I made sure it was toggled and then created the plants table. First, I had to choose my data points and a suitable PostgreSQL type. 
