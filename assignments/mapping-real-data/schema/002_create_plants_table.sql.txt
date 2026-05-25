@@ -1,0 +1,155 @@
+# Week 2: Mapping Real-World Data to Postgres Types
+
+## Assignment Overview
+Build a Community Garden Management System by creating a `plants` table and mapping real-world data points to appropriate PostgreSQL types.
+
+## Tasks Completed
+
+### Task 1: Data Type Analysis
+Analyzed 14 different data points for the plants table and determined optimal PostgreSQL types based on:
+- Data semantics and business requirements
+- Performance implications (indexing, storage, query speed)
+- Future-proofing and schema flexibility
+- SQL standard compliance
+
+**Key Decisions:**
+- VARCHAR with specific lengths for predictable-length fields
+- TEXT for unbounded user content
+- NUMERIC over MONEY for precision and portability
+- DATE over TIMESTAMP for day-level tracking
+- CHECK constraints over ENUM for flexibility
+
+See full analysis: [`docs/week2-type-mapping.md`](docs/week2-type-mapping.md)
+
+### Task 2: Schema Design
+
+Created `plants` table with 14 columns covering:
+- Plant identification (common name, scientific name)
+- Descriptive content (description, care notes)
+- Temporal tracking (planting, watering, harvest dates)
+- Growth attributes (stage, sunlight, water frequency)
+- Measurements (height in cm)
+- Properties (edibility boolean)
+- Inventory (price, quantity with constraints)
+- Audit timestamps (created_at, updated_at)
+
+```sql
+CREATE TABLE plants (
+    id SERIAL PRIMARY KEY,
+    common_name VARCHAR(100) NOT NULL,
+    scientific_name VARCHAR(150),
+    description TEXT,
+    planting_date DATE,
+    last_watered_date DATE,
+    harvest_date DATE,
+    growth_stage VARCHAR(20) CHECK (growth_stage IN ('seedling', 'vegetative', 'flowering', 'fruiting', 'dormant')),
+    sunlight_requirement VARCHAR(20) CHECK (sunlight_requirement IN ('full sun', 'partial shade', 'full shade')),
+    water_frequency VARCHAR(20) CHECK (water_frequency IN ('daily', 'weekly', 'bi-weekly', 'monthly')),
+    height_cm NUMERIC(5, 1),
+    is_edible BOOLEAN DEFAULT FALSE,
+    price NUMERIC(10, 2),
+    quantity_in_stock INTEGER DEFAULT 0 CHECK (quantity_in_stock >= 0),
+    care_notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### Task 3: Sample Data & Testing
+
+Inserted 10 diverse plant records including:
+- Vegetables: Cherokee Purple Tomato, Jalapeño Pepper, Zucchini
+- Herbs: Basil, Mint, Rosemary, Lavender
+- Fruits: Strawberry
+- Flowers: Sunflower, Hosta
+
+**Constraint Validation:**
+- ✅ CHECK constraints prevent invalid enum values
+- ✅ Negative quantity rejected by CHECK constraint
+- ✅ VARCHAR length limits enforced
+- ✅ NULL allowed in optional fields
+- ✅ NUMERIC precision maintains decimal places
+
+## Data Type Justifications
+
+| Column | Type | Reasoning |
+|--------|------|-----------|
+| `common_name` | VARCHAR(100) NOT NULL | Common plant names rarely exceed 100 chars; enforces UI display limits |
+| `scientific_name` | VARCHAR(150) | Botanical names (genus + species + cultivar) can be longer than common names |
+| `description` | TEXT | Variable-length content with no predictable maximum |
+| `planting_date` | DATE | Day-level precision sufficient; DATE lighter than TIMESTAMP (4 vs 8 bytes) |
+| `growth_stage` | VARCHAR(20) + CHECK | Limited set of values; CHECK more flexible than ENUM for future additions |
+| `height_cm` | NUMERIC(5,1) | Precise decimals up to 9999.9 cm; avoids floating-point rounding errors |
+| `is_edible` | BOOLEAN | Binary state; most semantically clear type for yes/no |
+| `price` | NUMERIC(10,2) | Precise currency to $99,999,999.99; avoids MONEY's locale dependency |
+| `quantity_in_stock` | INTEGER + CHECK >= 0 | Whole numbers only; constraint prevents negative inventory |
+| `care_notes` | TEXT | Unbounded instructional content |
+
+## What I Learned
+
+### PostgreSQL Data Types vs Real-World Modeling
+
+**String Types:**
+- VARCHAR(n) enforces length limit at database level and improves index performance
+- TEXT appropriate for unbounded content (descriptions, notes)
+- CHAR wastes space with padding; rarely appropriate
+
+**Enumerated Values:**
+- CHECK constraints more flexible than ENUM for schema evolution
+- Still provides validation at database level
+- Human-readable in queries vs numeric codes
+
+**Numeric Precision:**
+- NUMERIC avoids floating-point errors critical for money and measurements
+- NUMERIC(10,2) standard for currency (dollars and cents)
+- NUMERIC(5,1) appropriate for measurements needing one decimal place
+
+**Date vs Timestamp:**
+- DATE sufficient when time component irrelevant (planting date, harvest date)
+- DATE uses half the storage of TIMESTAMP
+- Choose based on actual business requirements, not "just in case"
+
+### The VARCHAR(255) Anti-Pattern
+
+**Why it's problematic:**
+- Historical artifact from older DB systems
+- One-size-fits-all approach doesn't validate actual constraints
+- Wastes index space on short fields
+- Doesn't communicate domain knowledge in schema
+
+**Better approach:**
+- Right-size each field based on actual data (names: 100, scientific names: 150, categories: 20)
+- Results in better index performance and clearer schema intent
+
+## Key Takeaways
+
+1. **Data type selection has performance implications** – VARCHAR(100) indexes faster than TEXT for known-length fields
+
+2. **VARCHAR(255) isn't always right** – Choose length based on actual domain constraints, not convenience
+
+3. **Constraints enforce data quality** – CHECK constraints catch invalid data at insert time, not application layer
+
+4. **NUMERIC > MONEY for currency** – NUMERIC portable, precise, and multi-currency ready
+
+5. **Semantic types matter** – BOOLEAN clearer than SMALLINT for yes/no; DATE clearer than TIMESTAMP for day-level data
+
+## Screenshots
+
+### Table Creation Success
+![CREATE TABLE execution](docs/screenshots/create-table-success.png)
+
+### Table Structure
+![DESCRIBE plants output](docs/screenshots/table-structure.png)
+
+### Sample Data
+![SELECT * FROM plants](docs/screenshots/sample-data-query.png)
+
+## Time Breakdown
+
+- **Total Hours:** 3 hours
+  - Data type research and mapping: 1.5 hours
+  - Schema design and testing: 1 hour
+  - Sample data creation: 0.5 hours
+  - Documentation and screenshots: 1 hour
+
+## Files in This Directory
