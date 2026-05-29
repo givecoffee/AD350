@@ -2,6 +2,8 @@
 
 Week 3: Building a schema that can track movies, handle data column rebranding, and manage massive influxes of temporary "watch-session" data.
 
+Video Demo: https://youtu.be/NRHhZ1cdLwY 
+
 ## Overview
 
 You have been hired as the lead Data Engineer for **StreamFlix**. Your first task is to build a schema that can track movies, handle a sudden rebranding of your data columns, and demonstrate how you would manage a massive influx of temporary "watch-session" data.
