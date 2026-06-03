@@ -39,7 +39,7 @@ CREATE TABLE ratings (
 );
 ```
 
-![Created ratings table](images/Pasted image 20260601225947.png)
+![Created ratings table](images/Pasted%20image%2020260601225947.png)
 
 Best practice right off the bat by naming the CONSTRAINT. By naming the constraint `fk_movie`, it can help in larger or growing codebases where debugging multiple constraints can make it hard to track down specific issues. Going to try my best to remember this going forward and get in the habit of doing it. When this error fires, it will say "violates foreign key constraint fk_movie".
 
@@ -76,7 +76,7 @@ FROM movies m
 JOIN ratings r ON m.id = r.movie_id;
 ```
 
-![JOIN query showing relationship](images/Pasted image 20260603151121.png)
+![JOIN query showing relationship](images/Pasted%20image%2020260603151121.png)
 
 Foreign key relationship is intact. Let's try to break it on purpose and put in an illegal insert to test it.
 
@@ -91,7 +91,7 @@ INSERT INTO ratings (movie_id, user_id, rating_value)
 VALUES (9999, 104, 7.5);
 ```
 
-![Illegal insert error](images/Pasted image 20260603151311.png)
+![Illegal insert error](images/Pasted%20image%2020260603151311.png)
 
 The error tells us (with the named constraint earlier "fk_movie") that the foreign key constraint has been violated. Movie id 9999 does not exist, thus not being present in the table "movies" so it is giving a helpful error message that knows exactly why it is being rejected.
 
@@ -103,11 +103,11 @@ Moving on, we can test ON DELETE RESTRICT. We have a rating attached to Interste
 DELETE FROM movies WHERE id = 1;
 ```
 
-![Destructive operation warning](images/Pasted image 20260603151618.png)
+![Destructive operation warning](images/Pasted%20image%2020260603151618.png)
 
 We get a warning that this query has destructive operations. But after running it, we get this error:
 
-![Protected delete error](images/Pasted image 20260603151652.png)
+![Protected delete error](images/Pasted%20image%2020260603151652.png)
 
 Same constraint, but opposite direction. Think about how we were testing the ratings table earlier and how it holds a reference. Key id = 1 is referenced from table "ratings" and so when you try to orphan the child rows, it stops it.
 
