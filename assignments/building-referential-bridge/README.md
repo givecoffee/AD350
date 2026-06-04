@@ -6,7 +6,7 @@ Your "StreamFlix" app is growing. You now need to allow users to rate movies. Ho
 
 ## Architecture Breakdown
 
-Before starting the demo, we should answer some main questions:
+Before jumping in, we should answer some main questions:
 
 **The Question:** If we were storing millions of raw, unformatted user "click-stream" logs, would we put them in this Supabase PostgreSQL table (Data Warehouse) or a Data Lake? Why?
 
