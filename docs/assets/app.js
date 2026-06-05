@@ -1,11 +1,3 @@
-/* ============================================================
-   AD350 · app.js
-   Handles:
-     1. Active nav highlighting
-     2. Mobile sidebar toggle
-     3. Assignment accordion (expand / collapse)
-   ============================================================ */
-
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ----------------------------------------------------------
