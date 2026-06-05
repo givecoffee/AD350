@@ -1,6 +1,8 @@
 # Building StreamFlix BigData
 
-Week 4: Building a schema that can track movies, handle data column rebranding, and manage massive influxes of temporary "watch-session" data.
+Week 3: Building a schema that can track movies, handle data column rebranding, and manage massive influxes of temporary "watch-session" data.
+
+Video Demo: https://youtu.be/NRHhZ1cdLwY 
 
 ## Overview
 
