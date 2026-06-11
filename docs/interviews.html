@@ -1,83 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mock Interviews · AD350</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,800&family=JetBrains+Mono:wght@400;500;700&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
-<style>
-  .video-grid {
-    display: grid;
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-
-  .video-card {
-    background: var(--surface, #fff);
-    border: 1px solid var(--border, #e5e7eb);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .video-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  }
-
-  .video-embed {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    background: #000;
-  }
-
-  .video-embed iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-
-  .video-info {
-    padding: 1.5rem;
-  }
-
-  .video-week {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.875rem;
-    color: var(--text-muted, #6b7280);
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
-
-  .video-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: 0 0 0.5rem 0;
-    line-height: 1.3;
-  }
-
-  .video-description {
-    font-family: 'Geist', sans-serif;
-    font-size: 0.9375rem;
-    color: var(--text-secondary, #4b5563);
-    line-height: 1.6;
-    margin: 0;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mock Interviews · AD350</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,800&family=JetBrains+Mono:wght@400;500;700&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
 <button class="menu-toggle" aria-label="Menu">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <line x1="3" y1="6" x2="21" y2="6"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <line x1="3" y1="18" x2="21" y2="18"/>
+  </svg>
 </button>
 
 <div class="layout">
@@ -85,50 +24,34 @@
   <aside>
     <a class="brand" href="index.html">
       <div class="brand-mark">DB</div>
-      <div class="brand-text">
-        AD350
-        <small>Database Tech</small>
-      </div>
+      <div class="brand-text">AD350<small>Database Tech</small></div>
     </a>
-
     <nav>
       <h4>Main</h4>
       <ul>
         <li><a href="index.html" data-page="index.html">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12L12 3l9 9"/><path d="M5 10v10h14V10"/></svg>
-          Home
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12L12 3l9 9"/><path d="M5 10v10h14V10"/></svg>Home
         </a></li>
         <li><a href="assignments.html" data-page="assignments.html">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
-          Assignments
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Assignments
         </a></li>
         <li><a href="devlogs.html" data-page="devlogs.html">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>
-          Dev Logs
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>Dev Logs
         </a></li>
         <li><a href="blogs.html" data-page="blogs.html">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          Discussion Blogs
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Discussion Blogs
         </a></li>
         <li><a href="interviews.html" data-page="interviews.html">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4l4 4 4-4h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
-          Mock Interviews
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4l4 4 4-4h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>Mock Interviews
         </a></li>
         <li><a href="integrations.html" data-page="integrations.html">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-          Integrations
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Integrations
         </a></li>
         <li><a href="practicum.html" data-page="practicum.html">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <path
-                d="M21 7.5V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7.5M7 3.5h10a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2z" />
-              <path d="M12 12v5M12 17v2" />
-            </svg>
-            Practicum
-          </a></li>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 7.5V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7.5M7 3.5h10a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2z"/><path d="M12 12v5M12 17v2"/></svg>Practicum
+        </a></li>
       </ul>
     </nav>
-
     <div class="sidebar-foot">
       Rae &middot; NSC<br>
       <a href="https://github.com/givecoffee/AD350" target="_blank" rel="noopener">
@@ -149,12 +72,7 @@
 
       <div class="video-card">
         <div class="video-embed">
-          <iframe 
-            src="https://www.youtube.com/embed/VIDEO_ID_1" 
-            title="Mock Interview - Week 1"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="Mock Interview - Week 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-info">
           <div class="video-week">Week 1</div>
@@ -165,12 +83,7 @@
 
       <div class="video-card">
         <div class="video-embed">
-          <iframe 
-            src="https://www.youtube.com/embed/VIDEO_ID_2" 
-            title="Mock Interview - Week 2"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Mock Interview - Week 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-info">
           <div class="video-week">Week 2</div>
@@ -181,12 +94,7 @@
 
       <div class="video-card">
         <div class="video-embed">
-          <iframe 
-            src="https://www.youtube.com/embed/VIDEO_ID_3" 
-            title="Mock Interview - Week 3"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Mock Interview - Week 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-info">
           <div class="video-week">Week 3</div>
@@ -197,12 +105,7 @@
 
       <div class="video-card">
         <div class="video-embed">
-          <iframe 
-            src="https://www.youtube.com/embed/VIDEO_ID_4" 
-            title="Mock Interview - Week 4"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" title="Mock Interview - Week 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-info">
           <div class="video-week">Week 4</div>
@@ -213,12 +116,7 @@
 
       <div class="video-card">
         <div class="video-embed">
-          <iframe 
-            src="https://www.youtube.com/embed/VIDEO_ID_5" 
-            title="Mock Interview - Week 5"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_5" title="Mock Interview - Week 5" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-info">
           <div class="video-week">Week 5</div>
@@ -229,12 +127,7 @@
 
       <div class="video-card">
         <div class="video-embed">
-          <iframe 
-            src="https://www.youtube.com/embed/VIDEO_ID_6" 
-            title="Mock Interview - Week 6"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_6" title="Mock Interview - Week 6" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-info">
           <div class="video-week">Week 6</div>
@@ -249,8 +142,8 @@
       <div>6 weekly interviews &middot; updated as recorded</div>
       <div><a href="index.html">&larr; Home</a></div>
     </footer>
-
   </main>
+
 </div>
 
 <script src="assets/app.js"></script>
