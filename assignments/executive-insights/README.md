@@ -1,3 +1,5 @@
+## Week 9 Executive Insights & Catalog Cleanup 
+
 This week will be using aggregation (GROUP BY, HAVING) and using conditional logic (CASE, COALESCE). We are making useful business reports in Supabase, and this is where some of the real fun begins. 
 
 First, we are going to practice good data hygiene and prepare the datasets. We will update the database itself with specific mock data provided to use and it will simulate messy user registrations and real problems that causes mismatches. 
