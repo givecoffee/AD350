@@ -524,14 +524,15 @@
           </div>
         </div>
 
-               <!-- Week 8-->
+        <!-- Week 8-->
         <div class="expandable-item">
           <div class="item-header">
             <div class="item-num">08</div>
             <div class="item-body">
               <div class="item-meta">Week 8 &middot; Due May 31</div>
               <h3>StreamFlix "User Engagement" Analytics Challenge</h3>
-              <p>Students will write precise PostgreSQL queries using INNER JOIN, LEFT JOIN, and FULL JOIN to connect a movie catalog with user review data.
+              <p>Students will write precise PostgreSQL queries using INNER JOIN, LEFT JOIN, and FULL JOIN to connect a
+                movie catalog with user review data.
             </div>
             <div class="status done">Done <span class="arrow">▼</span></div>
           </div>
@@ -540,8 +541,8 @@
               <div class="detail-section">
                 <h4>Submission Links</h4>
                 <div class="submission-links">
-                  <a href="https://github.com/givecoffee/AD350/tree/main/assignments/user-engagement"
-                    target="_blank" class="submission-link">
+                  <a href="https://github.com/givecoffee/AD350/tree/main/assignments/user-engagement" target="_blank"
+                    class="submission-link">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                       <path
                         d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.9.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3" />
@@ -564,12 +565,85 @@
               <div class="detail-section">
                 <h4>What I Learned</h4>
                 <ul class="learnings">
-                  <li></li>
+                  <li>INNER JOIN returns only rows with matches in both tables — orphan ratings and unreviewed movies
+                    are both excluded</li>
+                  <li>LEFT JOIN returns all rows from the left table with NULLs where no match exists in the right
+                    table, useful for finding gaps in data</li>
+                  <li>FULL OUTER JOIN returns everything from both tables, surfacing both orphaned ratings and movies
+                    with no reviews in one query</li>
+                  <li>TRUNCATE does not reset sequences — use RESTART IDENTITY or ALTER SEQUENCE to avoid ID mismatches
+                    when reseeding</li>
                 </ul>
               </div>
               <div class="detail-section">
                 <h4>Key Takeaways</h4>
-                <p></p>
+                <p>Choosing the right JOIN type depends on what you want to exclude, not just what you want to include.
+                  INNER JOIN is for active, complete data. LEFT JOIN finds missing relationships. FULL OUTER JOIN is a
+                  complete system audit. A schema rename from a previous week also carried forward here — a good
+                  reminder that real databases accumulate decisions over time and code has to adapt to them.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Week 9 -->
+        <div class="expandable-item">
+          <div class="item-header">
+            <div class="item-num">09</div>
+            <div class="item-body">
+              <div class="item-meta">Week 9 &middot; Due June 7</div>
+              <h3>StreamFlix "User Engagement" Analytics Challenge</h3>
+              <p>Students will write precise PostgreSQL queries using aggregation (GROUP BY, HAVING) and conditional
+                logic (CASE, COALESCE) to build clean business intelligence reports in Supabase.</p>
+            </div>
+            <div class="status done">Done <span class="arrow">▼</span></div>
+          </div>
+          <div class="item-details">
+            <div class="item-content">
+              <div class="detail-section">
+                <h4>Submission Links</h4>
+                <div class="submission-links">
+                  <a href="https://github.com/givecoffee/AD350/tree/main/assignments/executive-insights" target="_blank"
+                    class="submission-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.9.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3" />
+                    </svg>
+                    GitHub Repository
+                  </a>
+                  <a href="https://github.com/givecoffee/AD350/blob/main/assignments/executive-insights/README.md"
+                    target="_blank" class="submission-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                      <polyline points="14 2 14 8 20 8" />
+                      <line x1="16" y1="13" x2="8" y2="13" />
+                      <line x1="16" y1="17" x2="8" y2="17" />
+                      <polyline points="10 9 9 9 8 9" />
+                    </svg>
+                    README Document
+                  </a>
+                </div>
+              </div>
+              <div class="detail-section">
+                <h4>What I Learned</h4>
+                <ul class="learnings">
+                  <li>GROUP BY aggregates rows into groups; HAVING filters those groups after aggregation, unlike WHERE
+                    which filters rows before</li>
+                  <li>COALESCE returns the first non-NULL value in a list, making it straightforward to substitute
+                    display-friendly fallbacks for missing data</li>
+                  <li>CASE expressions evaluate conditions top-down and return on the first match, similar to if/else
+                    logic in application code</li>
+                  <li>TRUNCATE without RESTART IDENTITY leaves the sequence at its prior position, causing new inserts
+                    to start from unexpected IDs</li>
+                </ul>
+              </div>
+              <div class="detail-section">
+                <h4>Key Takeaways</h4>
+                <p>Aggregation queries build the foundation of most business reporting — knowing when to use HAVING
+                  versus WHERE is the key distinction. COALESCE and CASE are the tools for cleaning up how data is
+                  presented without changing what's stored. A recurring theme this week and last: seed data issues with
+                  sequences caused incorrect results that looked correct until inspected closely.</p>
               </div>
             </div>
           </div>
