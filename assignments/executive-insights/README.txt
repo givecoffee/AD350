@@ -1,0 +1,1 @@
+Students will write precise PostgreSQL queries using aggregation (GROUP BY, HAVING) and conditional logic (CASE, COALESCE) to build clean business intelligence reports in Supabase.
