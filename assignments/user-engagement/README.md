@@ -140,3 +140,6 @@ ORDER BY m.title NULLS LAST, r.user_email;
 ![](images/Pasted%20image%2020260610211431.png)
 
 All 7 rows accounted for with two unreviewed titles, ghost@email.com is an orphan rating. 
+
+### Reflection 
+INNER JOIN returns only rows where a match exists in both tables. If either side has no match, that row is dropped entirely. LEFT JOIN returns every row from the left table regardless of whether a match exists on the right. Where no match is found, the right table columns come back as NULL. 
