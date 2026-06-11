@@ -1,3 +1,4 @@
+## Week 8 - The StreamFlix "User Engagement" Analytics Challenge
 We will be using JOINS (Inner, Left, and Full) to connect our movie catalog with user review data.
 
 Given the script, we create a new table with explicit IDs:
