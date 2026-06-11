@@ -1,0 +1,1 @@
+Students will write precise PostgreSQL queries using INNER JOIN, LEFT JOIN, and FULL JOIN to connect a movie catalog with user review data.
