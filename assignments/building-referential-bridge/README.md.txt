@@ -1,2 +1,0 @@
-
-Your "StreamFlix" app is growing. You now need to allow users to rate movies. However, if you delete a movie, you don't want "ghost ratings" (ratings for a movie that no longer exists) cluttering your database. You will implement a **Foreign Key** to prevent this.
